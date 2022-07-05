@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Mockman } from "mockman-js";
+import Mockman from "mockman-js";
 import { 
     NotFound, 
     Signup, 
@@ -17,7 +17,7 @@ export const SiteRoutes = () => {
     return(
         <Routes>
             <Route path="/mockman" element={<Mockman />} />            
-            <Route path="/not-found" element={<NotFound />} />            
+            <Route path="*" element={<NotFound />} />            
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />            
             <Route path="/" element={<Home />} />            
