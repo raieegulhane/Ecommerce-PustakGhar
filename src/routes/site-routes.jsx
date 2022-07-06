@@ -23,8 +23,8 @@ export const SiteRoutes = () => {
             <Route path="/" element={<Home />} />            
             <Route path="/home" element={<Home />} />            
             <Route path="/profile" element={<Profile />} />            
-            <Route path="/product-listing" element={<ProductListing />} />            
-            <Route path="/product-display" element={<ProductDisplay />} />            
+            <Route path="/bookstore" element={<ProductListing />} />            
+            <Route path="/product" element={<ProductDisplay />} />            
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />

@@ -1,0 +1,52 @@
+.btn-wt-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+/* .btn {
+    border-color: var(--primary);
+}
+
+.btn:hover {
+    border-color: var(--orange);
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--orange);
+}
+
+.btn-outline {
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    color: var(--orange);
+}
+
+.btn-link {
+    color: var(--primary);
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: var(--orange);
+}
+
+.btn-icon {
+    color: var(--gray2);
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    background-color: transparent;
+} */

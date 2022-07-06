@@ -1,0 +1,118 @@
+.nav-wrapper {
+    background-color: var(--black);
+    padding-top: 0.75rem;
+}
+
+
+/* primary nav */
+.nav-pri-container {
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--grey3);    
+}
+
+.nav-pri-sec1 {
+    gap: 3rem;
+}
+
+.nav-pri-list {
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-pri-item {
+    color: white;
+    text-decoration: none;
+    padding-top: 0.5rem;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.nav-pri-item:hover {
+    color: var(--orange);
+}
+
+.nav-pri-item-selected {
+    border-bottom: 3px solid var(--primary);
+}
+
+.nav-pri-sec2 {
+    margin-left: auto;
+}
+
+.nav-pri-icon {
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+
+.nav-pri-txt {
+    font-size: 0.75rem;
+}
+
+
+/* search-box */
+.search-box-wrapper {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+.search-box-container {
+    background-color: var(--white);
+    width: 70%;
+    border-radius: var(--br-sq);
+    margin-left: auto;
+}
+
+.nav-search-icon {
+    color: var(--grey2);
+    padding: 0 1rem;
+    margin-left: auto;
+}
+
+.search-box {
+    background-color: transparent;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--br-sq);
+    outline: none;
+    transition: 0.5s ease-in;
+}
+
+.search-box::placeholder {
+    color: var(--grey2);
+}
+
+
+/* secondary-nav */
+.nav-pri-list {
+    list-style: none;
+}
+
+.nav-sec-btn {
+    background-color: transparent;
+    color: var(--white);
+    font-size: 0.75rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.nav-sec-btn:hover {
+    background-color: var(--primary);
+    color: var(--black);
+}
+
+.nav-sec-txt {
+    font-weight: bold;
+}
+
+.nav-sec-icon {
+    font-size: 0.85rem;
+}
+
+.bookclub-cta {
+    margin-left: auto;
+}
