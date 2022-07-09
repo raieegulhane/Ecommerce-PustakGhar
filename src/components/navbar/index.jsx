@@ -107,7 +107,7 @@ export const Navbar = () => {
                     <li>
                         <NavLink
                             to="./bookstore" 
-                            className={navSecActiveClass}
+                            className="nav-sec-item"
                         >
                             <span className="txt-bold">ALL CATEGORIES</span>
                         </NavLink>

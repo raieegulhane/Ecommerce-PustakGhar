@@ -2,6 +2,8 @@
     position: sticky;
     background-color: var(--black);
     padding-top: 0.75rem;
+    box-shadow: 0px 15px 10px -15px rgba(30 30 30 / 75);    
+    z-index: 10;
 }
 
 
@@ -104,6 +106,7 @@
 }
 
 .nav-sec-item:hover,
+.nav-sec-item:focus,
 .nav-sec-item-selected {
     background-color: var(--primary);
     color: var(--black);
