@@ -1,12 +1,23 @@
 import "./navbar.css";
-import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
+import { ProfileDropdown } from "./profile-dropdown";
+
 
 export const Navbar = () => {
+    const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+
     const navPriActiveClass = ({ isActive }) => {
         return isActive ? 
-            "nav-pri-item nav-pri-item-selected flex-col flex_align-middle" : 
-            "nav-pri-item flex-col flex_align-middle";
+            "nav-pri-item nav-pri-item-selected flex-col flex_justify-center flex_align-middle" : 
+            "nav-pri-item flex-col flex_justify-center flex_align-middle";
+    }
+
+    const navSecActiveClass = ({ isActive }) => {
+        return isActive ? 
+            "nav-sec-item nav-sec-item-selected":
+            "nav-sec-item";
     }
 
 
@@ -53,10 +64,17 @@ export const Navbar = () => {
 
                 <ul className="nav-pri-list nav-pri-sec2 flex-row">
                     <li>
-                        <div className="nav-pri-item profile-dd flex-col flex_align-middle">
+                        <div 
+                            className={`profile-dd-btn nav-pri-item flex-col flex_justify-center flex_align-middle}`}
+                            onClick={() => (setShowProfileDropdown(!showProfileDropdown))}    
+                        >
                             <i className="fa-solid fa-user nav-pri-icon"></i>
-                            <span className="nav-pri-txt">Profile</span>
+                            <span className="nav-pri-txt">Account</span>
                         </div>
+                        {
+                            showProfileDropdown &&
+                            <ProfileDropdown />
+                        }
                     </li>
                     <li>
                         <NavLink 
@@ -80,30 +98,44 @@ export const Navbar = () => {
                 </ul>
             </div>
 
+            {/* profile dropdown */}
+            
+
             {/* secondary nav */}
-            <div className="nav-sec-container flex-row flex_align-middle">
-                <ul className="nav-sec-list list-noBullets flex-row">
+            <div className="nav-sec-container flex-row flex_justify-sb flex_align-middle">
+                <ul className="list-noBullets flex-row flex_align-middle">
                     <li>
-                        <button className="nav-sec-btn btn-wt-icon">
-                            <span className="nav-sec-txt">ALL CATEGORIES</span>
-                            <i className="fa-solid fa-angle-down nav-sec-icon"></i>
-                        </button>
+                        <NavLink
+                            to="./bookstore" 
+                            className={navSecActiveClass}
+                        >
+                            <span className="txt-bold">ALL CATEGORIES</span>
+                        </NavLink>
                     </li>
                     <li>
-                        <button className="nav-sec-btn">
-                            Best Sellers
-                        </button>
+                        <NavLink 
+                            to="./bestsellers"
+                            className={navSecActiveClass}
+                        >
+                            Bestsellers
+                        </NavLink>
                     </li>
                     <li>
-                        <button className="nav-sec-btn">
+                        <NavLink 
+                            to="./today's-deals"
+                            className={navSecActiveClass}
+                        >
                             Today's Deals
-                        </button>
+                        </NavLink>
                     </li>
                 </ul>
 
-                <button className="bookclub-cta nav-sec-btn nav-sec-txt">
-                    JOIN OUR BOOKCLUB TODAY!!!
-                </button>
+                <NavLink
+                    to="./book-club" 
+                    className={navSecActiveClass}
+                >
+                    <span className="txt-bold">JOIN OUR BOOKCLUB TODAY!!!</span>
+                </NavLink>
             </div>
         </nav>
     );

@@ -6,7 +6,7 @@
     gap: 0.35rem;
 }
 
-/* .btn {
+.btn {
     border-color: var(--primary);
 }
 
@@ -31,22 +31,22 @@
     color: var(--orange);
 }
 
-.btn-link {
+/* .btn-link {
     color: var(--primary);
-}
+} */
 
-.btn-link:hover {
+/* .btn-link:hover {
     text-decoration: none;
     color: var(--orange);
-}
+} */
 
-.btn-icon {
+/* .btn-icon {
     color: var(--gray2);
     height: fit-content;
     width: fit-content;
     cursor: pointer;
-}
+} */
 
-.btn-icon:hover {
+/* .btn-icon:hover {
     background-color: transparent;
 } */

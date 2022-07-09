@@ -5,12 +5,15 @@ import {
     Signup, 
     Login, 
     Home, 
-    Profile, 
+    Account, 
     ProductListing, 
     ProductDisplay,
     Wishlist,
     Cart,
-    Checkout
+    Checkout,
+    Bestsellers,
+    TodaysDeals,
+    Bookclub
 } from "../pages";
 
 export const SiteRoutes = () => {
@@ -22,12 +25,15 @@ export const SiteRoutes = () => {
             <Route path="/login" element={<Login />} />            
             <Route path="/" element={<Home />} />            
             <Route path="/home" element={<Home />} />            
-            <Route path="/profile" element={<Profile />} />            
+            <Route path="/account" element={<Account />} />            
             <Route path="/bookstore" element={<ProductListing />} />            
             <Route path="/product" element={<ProductDisplay />} />            
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/bestsellers" element={<Bestsellers />} />
+            <Route path="/today's-deals" element={<TodaysDeals />} />
+            <Route path="/book-club" element={<Bookclub />} />
         </Routes>
     );
 }

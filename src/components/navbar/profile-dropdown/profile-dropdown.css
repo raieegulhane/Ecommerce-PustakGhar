@@ -1,0 +1,59 @@
+.profile-dd-wrapper {
+    position: absolute;
+    top: 55%;
+    background-color: var(--grey4);
+    border-top: 2px solid var(--primary);
+    border-radius: 0 0 var(--br-sq) var(--br-sq);
+    margin: 0.5rem 0;
+}
+
+.profile-dd-container {
+    position: relative;
+    color: var(--white);
+    max-width: 25s0px;
+    padding: 1rem;
+}
+
+.tri-dd-icon {
+    position: absolute;
+    top: -10px;
+    left: 4px;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.dd-sec {
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--grey3);  
+  padding-bottom: 1.5rem;
+}
+
+.username-display {
+    font-size: 0.85rem;
+    font-weight: bold;
+    word-wrap: break-word;
+    padding: 0 0.25rem;
+}
+
+.email-display {
+    font-size: 0.75rem;
+    word-wrap: break-word;
+    padding: 0 0.25rem 0.5rem;
+}
+
+.btn.dd-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.dd-link {
+    color: var(--color);
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 0.75rem 0.25rem 0;
+}
+
+.dd-link:hover {
+    font-weight: bold;
+}

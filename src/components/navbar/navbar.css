@@ -1,4 +1,5 @@
 .nav-wrapper {
+    position: sticky;
     background-color: var(--black);
     padding-top: 0.75rem;
 }
@@ -36,6 +37,10 @@
     border-bottom: 3px solid var(--primary);
 }
 
+.profile-dd-btn {
+    position: relative;
+}
+
 .nav-pri-sec2 {
     margin-left: auto;
 }
@@ -43,6 +48,7 @@
 .nav-pri-icon {
     color: var(--primary);
     font-size: 1.25rem;
+    text-align: center;
 }
 
 .nav-pri-txt {
@@ -64,7 +70,7 @@
 }
 
 .nav-search-icon {
-    color: var(--grey2);
+    color: var(--black);
     padding: 0 1rem;
     margin-left: auto;
 }
@@ -77,7 +83,7 @@
     border: none;
     border-radius: var(--br-sq);
     outline: none;
-    transition: 0.5s ease-in;
+    caret-color: var(--orange);
 }
 
 .search-box::placeholder {
@@ -86,33 +92,23 @@
 
 
 /* secondary-nav */
-.nav-pri-list {
-    list-style: none;
-}
-
-.nav-sec-btn {
+.nav-sec-item {
     background-color: transparent;
     color: var(--white);
     font-size: 0.75rem;
+    text-decoration: none;
     padding: 0.5rem 2rem;
     border: none;
     cursor: pointer;
     transition: 1s ease;
 }
 
-.nav-sec-btn:hover {
+.nav-sec-item:hover,
+.nav-sec-item-selected {
     background-color: var(--primary);
     color: var(--black);
 }
 
-.nav-sec-txt {
-    font-weight: bold;
-}
-
 .nav-sec-icon {
     font-size: 0.85rem;
-}
-
-.bookclub-cta {
-    margin-left: auto;
 }
