@@ -1,12 +1,15 @@
 /***** fonts *****/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@800&display=swap');
 
 :root {
     /*** fonts ***/
     --text-font: 'Poppins', sans-serif;
+    --logo-font: 'Abhaya Libre', serif;
 
     /*** color ***/
     --primary: #ec5d0f;
+    --accent: #FFD6C0;
     --bg-pri: #eaeaea;
     --bg-sec: #efefef;
     --black: #090909;
@@ -18,4 +21,6 @@
     --orange: #ff8323;
     --green: #019b01;
     --red: #ff2424;
+
+    --hero-txt: #2f2e41;
 }

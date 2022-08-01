@@ -98,8 +98,6 @@ export const Navbar = () => {
                 </ul>
             </div>
 
-            {/* profile dropdown */}
-            
 
             {/* secondary nav */}
             <div className="nav-sec-container flex-row flex_justify-sb flex_align-middle">

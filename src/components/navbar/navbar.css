@@ -1,8 +1,9 @@
 .nav-wrapper {
     position: sticky;
+    top: 0;
     background-color: var(--black);
     padding-top: 0.75rem;
-    box-shadow: 0px 15px 10px -15px rgba(30 30 30 / 75);    
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.5);    
     z-index: 10;
 }
 

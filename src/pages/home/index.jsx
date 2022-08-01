@@ -1,7 +1,12 @@
+import "./home.css";
+import { DiscountDisplay, GenreDisplay, Hero } from "../../components";
+
 export const Home = () => {
     return(
         <div>
-            HOME
+            <Hero />
+            <GenreDisplay />
+            <DiscountDisplay />
         </div>
     );
 }

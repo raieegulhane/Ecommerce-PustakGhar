@@ -1,0 +1,29 @@
+.hero-wrapper {
+    position: relative;
+}
+
+.hero-cta {
+    position: absolute;
+    top: 30%;
+    right: 27%;
+}
+
+.hero-txt {
+    color: var(--hero-txt);
+    font-family: var(--logo-font);
+    font-size: 4rem;
+    font-weight: 800;
+    word-wrap: break-word;
+    text-align: center;
+    text-shadow: 7px 7px 3px rgba(0,0,0,0.15);
+}
+
+.btn.hero-cta-btn {
+    color: var(--black);
+    font-family: var(--logo-font);
+    font-size: 1.25rem;
+    font-weight: 800;
+    padding: 0.5rem 2rem;
+    margin: 2rem auto;
+    box-shadow: -7px -7px 11px rgba(255, 255, 255, 0.5), 7px 7px 11px rgba(0, 0, 0, 0.3);
+}
