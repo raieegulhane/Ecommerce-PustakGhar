@@ -5,7 +5,7 @@ export { Login } from "./auth/login";
 
 export { Home } from "./home";
 export { Account } from "./account";
-export { ProductListing } from "./product-listing";
+export { Bookstore } from "./bookstore";
 export { ProductDisplay } from "./product-display";
 export { Wishlist } from "./wishlist";
 export { Cart } from "./cart";

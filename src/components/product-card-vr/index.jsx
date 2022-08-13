@@ -19,7 +19,7 @@ export const ProductCardVr = ({ coverImage, title, author, stars, totalRatings, 
                     <p className="txt-sm">{author}</p>
                 </div>
                 <div class="rating_block-dark txt-sm">  
-                    <i class="fa-solid fa-star"></i>                                                                 
+                    <i className="fa-solid fa-star"></i>                                                                 
                     {stars} | {totalRatings}
                 </div> 
                 <p>
