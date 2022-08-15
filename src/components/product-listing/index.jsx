@@ -1,8 +1,14 @@
 import "./product-listing.css";
 import { ProductCardVr } from "../../components";
 import { products } from "../../backend/db/products";
+import { useFilter } from "../../contexts";
+import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
+
 
 export const ProductListing = () => {
+    const { filterState } = useFilter();
+    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(products, filterState);
+
     return(
         <div className="prod-list-wrapper">
             <div class="prod-list-header flex-row flex_justify-center">
@@ -11,7 +17,7 @@ export const ProductListing = () => {
 
             <div className="prod-list-container flex-row flex_justify-center">
                 {
-                    products.map(({ 
+                    filteredAndSortedProducts.map(({ 
                         _id, 
                         title, 
                         author, 
@@ -45,32 +51,3 @@ export const ProductListing = () => {
         </div>
     );
 }
-
-
-// {data.map((item) => (
-//     <div className="card_container card-vr">
-//         <img className="card_img image-100pr" src={item.coverImage} alt={item.name}/>
-//         <button className="btn-icon wishlist-btn">
-//             <i class="wishlist-icon fa-solid fa-heart card_icon"></i>
-//         </button>
-//         <div className="card_content flex-col">
-//             <div>
-//                 <h4 className="card-heading">{item.title}</h4>
-//                 <p className="txt-sm">{item.author}</p>
-//             </div>
-//             <div class="rating_block-dark txt-sm">  
-//                 <i class="fa-solid fa-star"></i>                                                                 
-//                 {item.stars} | {item.totalRatings}
-//             </div> 
-//             <p>
-//                 <span>₹{item.discountedPrice} </span>
-//                 <span className="txt-sm txt-red txt-linethrough">₹{item.originalPrice}</span>{" "}
-//                 <span class="txt-sm txt-green">{item.discount}% off</span>
-//             </p> 
-//         </div>
-//         <button className="txt-sm btn btn-block btn-primary btn-wtIcon btn-sq addToCart-btn">
-//             <i className="fa-solid fa-cart-shopping"></i>{" "}
-//             Add to Cart
-//         </button>
-//     </div>
-// ))}

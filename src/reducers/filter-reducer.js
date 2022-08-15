@@ -8,7 +8,7 @@ const initialFilterValues = {
         fiction: false,
         philosophy: false,
         romance: false,
-        selfHelp: false,
+        self_help: false,
         science: false
     },
     price: "",
@@ -25,6 +25,24 @@ const initialFilterValues = {
 
 const filterReducerFunction = (state, { type, payload }) => {
     switch(type) {
+        case "POPULARITY": 
+            return({
+                ...state,
+                sortBy: "POPULARITY"
+            });
+
+        case "PRICE_HIGH_TO_LOW":
+            return({
+                ...state,
+                sortBy: "PRICE_HIGH_TO_LOW"
+            });
+
+        case "PRICE_LOW_TO_HIGH":
+            return({
+                ...state,
+                sortBy: "PRICE_LOW_TO_HIGH"
+            });
+    
         default: 
             return { initialFilterValues }
     }
