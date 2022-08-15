@@ -81,19 +81,27 @@ export const discount = [
 export const ratings = [
     {
         _id: uuid(),
-        rating: [1, 2, 3, 4]
+        ratingOption: [1, 2, 3, 4],
+        htmlFor: "4-star-and-up",
+        value: "4"
     },
     {
         _id: uuid(),
-        rating: [1, 2, 3]
+        ratingOption: [1, 2, 3],
+        htmlFor: "3-star-and-up",
+        value: "3"
     },
     {
         _id: uuid(),
-        rating: [1, 2]
+        ratingOption: [1, 2],
+        htmlFor: "2-star-and-up",
+        value: "2"
     },
     {
         _id: uuid(),
-        rating: [1]
+        ratingOption: [1],
+        htmlFor: "1-star-and-up",
+        value: "1"
     }
 ]
 
@@ -101,22 +109,34 @@ export const ratings = [
 export const format = [
     {
         _id: uuid(),
-        format: "Paperback"
+        formatOption: "Paperback",
+        htmlFor: "format-paperback",
+        value: "paperback",
+        actionType: "FORMAT_PAPERBACK"
     }, 
     {
         _id: uuid(),
-        format: "Hard-cover"
+        formatOption: "Hard-cover",
+        htmlFor: "format-hardcover",
+        value: "hardcover",
+        actionType: "FORMAT_HARDCOVER"
     }
 ]
 
 
-export const otherFilters = [
+export const otherFiltersList = [
     {
         _id: uuid(),
-        filter: "Bestsellers"
+        filterOption: "Bestsellers",
+        htmlFor: "filter-bestSeller",
+        value: "bestSeller",
+        actionType: "FILTER_BESTSELLER"
     },
     {
         _id: uuid(),
-        filter: "In Stock"
+        filterOption: "In Stock",
+        htmlFor: "filter-inStock",
+        value: "inStock",
+        actionType: "FILTER_INSTOCK"
     }
 ]

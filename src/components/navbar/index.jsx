@@ -58,7 +58,7 @@ export const Navbar = () => {
                             // value
                             // onChange
                         />
-                        <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+                        <i className="fa-solid fa-magnifying-glass nav-search-icon"></i>
                     </div>
                 </div>
 

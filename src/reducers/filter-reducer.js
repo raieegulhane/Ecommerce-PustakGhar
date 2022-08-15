@@ -14,23 +14,58 @@ const initialFilterValues = {
     filterByPrice: "",
     filterByDiscount: "",
     filterByRating: "",
-    filterByFormat: "",
+    filterByFormat: {
+        paperback: false,
+        hardcover: false
+    },
     otherFilters: {
-        bestseller: false,
-        isStock: false
+        bestSeller: false,
+        inStock: false
     },
     sortBy: ""
 }
 
 
 const filterReducerFunction = (state, { type, payload }) => {
+    const { filterByGenre, filterByFormat, otherFilters } = state;
+
     switch(type) {
         case "FILTER_BY_DISCOUNT":
             return({
                 ...state,
                 filterByDiscount: payload
-            })
+            });
 
+        case "FILTER_BY_RATING":
+            return({
+                ...state,
+                filterByRating: payload
+            });
+
+        case "FORMAT_PAPERBACK": 
+            return({
+                ...state,
+                filterByFormat: { ...filterByFormat, paperback: !filterByFormat.paperback }
+            });
+
+        case "FORMAT_HARDCOVER": 
+            return({
+                ...state,
+                filterByFormat: { ...filterByFormat, hardcover: !filterByFormat.hardcover }
+            });
+
+        case "FILTER_BESTSELLER": 
+            return({
+                ...state,
+                otherFilters: { ...otherFilters, bestSeller: !otherFilters.bestSeller }
+            });
+
+        case "FILTER_INSTOCK": 
+            return({
+                ...state,
+                otherFilters: { ...otherFilters, inStock: !otherFilters.inStock }
+            });
+            
         case "POPULARITY": 
             return({
                 ...state,

@@ -11,8 +11,8 @@ export const ProductListing = () => {
 
     return(
         <div className="prod-list-wrapper">
-            <div class="prod-list-header flex-row flex_justify-center">
-                <h1 class="product_heading txt-underline">All Books</h1>
+            <div className="prod-list-header flex-row flex_justify-center">
+                <h1 className="product_heading txt-underline">All Books</h1>
             </div>
 
             <div className="prod-list-container flex-row flex_justify-center">
@@ -26,6 +26,7 @@ export const ProductListing = () => {
                         discount, 
                         stars, 
                         totalRatings, 
+                        format,
                         inStock, 
                         bestSeller, 
                         coverImage 
@@ -40,6 +41,7 @@ export const ProductListing = () => {
                                 discount={discount}
                                 stars={stars}
                                 totalRatings={totalRatings}
+                                format={format}
                                 inStock={inStock}
                                 bestSeller={bestSeller}
                                 coverImage={coverImage}

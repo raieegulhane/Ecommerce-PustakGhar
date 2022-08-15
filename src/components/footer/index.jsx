@@ -9,7 +9,7 @@ export const Footer = () => {
                 <img src={Logo} alt="pustakghar logo" />
             </Link>
             
-            <div class="foot-copy flex-col flex_align-middle">
+            <div className="foot-copy flex-col flex_align-middle">
                 <p>Made with &lt;/&gt; by Raiee</p>
                 <p>&copy; 2022, PustakGhar</p>
                 <div className="container-social flex-row">

@@ -23,11 +23,12 @@ export const DiscountFilter = () => {
                                         type="radio" 
                                         name="discount"
                                         value={value}
-                                        // checked={ filterByDiscount === value}
+                                        checked={ filterByDiscount === value}
                                         onChange={
-                                            (event) => filterDispatch(
-                                                { type: "FILTER_BY_DISCOUNT", payload: event.target.value }
-                                            )
+                                            (event) => filterDispatch({ 
+                                                type: "FILTER_BY_DISCOUNT", 
+                                                payload: event.target.value 
+                                            })
                                         }
                                     />
                                     {discountOption}

@@ -1,8 +1,32 @@
 import "./product-card-vr.css";
 
-export const ProductCardVr = ({ coverImage, title, author, stars, totalRatings, discountedPrice, originalPrice, discount }) => {
+export const ProductCardVr = ({ 
+    coverImage, 
+    title, 
+    author, 
+    stars, 
+    totalRatings, 
+    discountedPrice, 
+    originalPrice, 
+    discount, 
+    format, 
+    bestSeller, 
+    inStock 
+}) => {
+
     return(
         <div className="card_container card-vr">
+            {
+                bestSeller &&
+                <div className="badge badge-sq">Bestseller</div>
+            }
+            {
+                !inStock &&
+                <div className="card_overlay">
+                    <p>Out Of Stock</p>
+                </div>
+            }
+
             <img 
                 className="card-img image-100pr" 
                 src={coverImage} 
@@ -16,16 +40,16 @@ export const ProductCardVr = ({ coverImage, title, author, stars, totalRatings, 
             <div className="card_content flex-col">
                 <div>
                     <h4 className="card-heading">{title}</h4>
-                    <p className="txt-sm">{author}</p>
+                    <p className="txt-sm">{author} | {format}</p>
                 </div>
-                <div class="rating_block-dark txt-sm">  
+                <div className="rating_block-dark txt-sm">  
                     <i className="fa-solid fa-star"></i>                                                                 
                     {stars} | {totalRatings}
                 </div> 
                 <p>
                     <span>₹{discountedPrice} </span>
                     <span className="txt-sm txt-red txt-linethrough">₹{originalPrice}</span>{" "}
-                    <span class="txt-sm txt-green">{discount}% off</span>
+                    <span className="txt-sm txt-green">{discount}% off</span>
                 </p> 
             </div>
             
@@ -36,3 +60,4 @@ export const ProductCardVr = ({ coverImage, title, author, stars, totalRatings, 
         </div>
     );
 }
+
