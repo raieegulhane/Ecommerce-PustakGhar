@@ -47,23 +47,33 @@ export const genre = [
 export const discount = [
     {
         _id: uuid(),
-        discount: "50% & above"
+        discountOption: "50% & above",
+        htmlFor: "50-percent-and-above",
+        value: "50"
     },
     {
         _id: uuid(),
-        discount: "40% & above"
+        discountOption: "40% & above",
+        htmlFor: "40-percent-and-above",
+        value: "40"
     },
     {
         _id: uuid(),
-        discount: "30% & above"
+        discountOption: "30% & above",
+        htmlFor: "30-percent-and-above",
+        value: "30"
     },
     {
         _id: uuid(),
-        discount: "20% & above"
+        discountOption: "20% & above",
+        htmlFor: "20-percent-and-above",
+        value: "20"
     },
     {
         _id: uuid(),
-        discount: "10% & above"
+        discountOption: "10% & above",
+        htmlFor: "10-percent-and-above",
+        value: "10"
     }
 ];
 

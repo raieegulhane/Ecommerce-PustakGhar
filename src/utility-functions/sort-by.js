@@ -22,6 +22,6 @@ export const sortByfunction = (productList, sortBy) => {
             );
 
 		default:
-			return [ ...productList ];
+			return([ ...productList ]);
 	}
 }

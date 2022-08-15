@@ -1,16 +1,21 @@
-import { sortByfunction } from ".";
+import { 
+    filterByDiscountFunction, 
+    sortByfunction 
+} from ".";
 
 export const getFilteredAndSortedProductsFunction = (allProducts, filterState) => {
     const {  
-        genre, 
-        price, 
-        discount, 
-        rating, 
-        format, 
-        other, 
+        filterByGenre, 
+        filterByPrice, 
+        filterByDiscount, 
+        filterByRating, 
+        filterByFormat, 
+        otherFilters, 
         sortBy 
     } = filterState;
 
-    const sortedProducts = sortByfunction(allProducts, sortBy);
+    const filteredByDiscountProducts = filterByDiscountFunction(allProducts, filterByDiscount);
+    const sortedProducts = sortByfunction(filteredByDiscountProducts, sortBy);
+    
     return sortedProducts;
 }

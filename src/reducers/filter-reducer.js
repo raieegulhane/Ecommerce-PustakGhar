@@ -1,5 +1,5 @@
 const initialFilterValues = {
-    genre: {
+    filterByGenre: {
         adventure: false,
         autobiography: false,
         children: false,
@@ -11,11 +11,11 @@ const initialFilterValues = {
         self_help: false,
         science: false
     },
-    price: "",
-    discount: "",
-    rating: "",
-    format: "",
-    other: {
+    filterByPrice: "",
+    filterByDiscount: "",
+    filterByRating: "",
+    filterByFormat: "",
+    otherFilters: {
         bestseller: false,
         isStock: false
     },
@@ -25,6 +25,12 @@ const initialFilterValues = {
 
 const filterReducerFunction = (state, { type, payload }) => {
     switch(type) {
+        case "FILTER_BY_DISCOUNT":
+            return({
+                ...state,
+                filterByDiscount: payload
+            })
+
         case "POPULARITY": 
             return({
                 ...state,
