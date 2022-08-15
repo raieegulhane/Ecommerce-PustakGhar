@@ -1,10 +1,15 @@
-import { createContext, useContext, usereducer } from "react";
+import { createContext, useContext, useReducer } from "react";
+import { initialFilterValues, filterReducerFunction } from "../reducers";
 
-const FilterContext = createContext();
+const FilterContext = createContext(initialFilterValues);
 
 const FilterProvider = ({ children }) => {
+
+    const [ filterState, filterDispatch ] = useReducer(filterReducerFunction, initialFilterValues);
     return(
-        <FilterContext.Provider>
+        <FilterContext.Provider
+            value={{ filterState, filterDispatch }}
+        >
             {children}
         </FilterContext.Provider>
     );
