@@ -49,6 +49,11 @@ export const ProductListing = () => {
                         );
                     }) 
                 }
+
+                {
+                    filteredAndSortedProducts.length < 1 &&
+                    <p>Sorry! Products you are searching for are unavailable at the moment.</p>
+                }
             </div>
         </div>
     );

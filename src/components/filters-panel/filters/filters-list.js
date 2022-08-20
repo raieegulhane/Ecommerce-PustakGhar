@@ -1,45 +1,75 @@
 import { v4 as uuid } from "uuid";
 
-export const genre = [
+export const genreList = [
     {
         _id: uuid(),
-        genre: "Adventure"
+        genreOption: "Adventure",
+        htmlFor: "genre-adventure",
+        value: "adventure",
+        actionType: "FILTER_BY_ADVENTURE"
     },
     {
         _id: uuid(),
-        genre: "Autobiography"
+        genreOption: "Autobiography",
+        htmlFor: "genre-autobiography",
+        value: "autobiography",
+        actionType: "FILTER_BY_AUTOBIOGRAPHY"
     },
     {
         _id: uuid(),
-        genre: "Children"
+        genreOption: "Children",
+        htmlFor: "genre-children",
+        value: "children",
+        actionType: "FILTER_BY_CHILDREN" 
     },
     {
         _id: uuid(),
-        genre: "Drama"
+        genreOption: "Drama",
+        htmlFor: "genre-drama",
+        value: "drama",
+        actionType: "FILTER_BY_DRAMA"
     },
     {
         _id: uuid(),
-        genre: "Fantasy"
+        genreOption: "Fantasy",
+        htmlFor: "genre-fantasy",
+        value: "fantasy",
+        actionType: "FILTER_BY_FANTASY"
     },
     {
         _id: uuid(),
-        genre: "Fiction"
+        genreOption: "Fiction",
+        htmlFor: "genre-diction",
+        value: "fiction",
+        actionType: "FILTER_BY_FICTION"
     },
     {
         _id: uuid(),
-        genre: "Philosophy"
+        genreOption: "Philosophy",
+        htmlFor: "genre-philosophy",
+        value: "philosophy",
+        actionType: "FILTER_BY_PHILOSOPHY" 
     },
     {
         _id: uuid(),
-        genre: "Romance"
+        genreOption: "Romance",
+        htmlFor: "genre-romance",
+        value: "romance",
+        actionType: "FILTER_BY_ROMANCE"
     },
     {
         _id: uuid(),
-        genre: "Self-help"
+        genreOption: "Self-help",
+        htmlFor: "genre-self-help",
+        value: "self-help",
+        actionType: "FILTER_BY_SELF_HELP"
     },
     {
         _id: uuid(),
-        genre: "Science"
+        genreOption: "Science",
+        htmlFor: "genre-science",
+        value: "science",
+        actionType: "FILTER_BY_SCIENCE"
     }
 ];
 

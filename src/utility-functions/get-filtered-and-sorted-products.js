@@ -1,11 +1,13 @@
 import { 
+    filterByGenreFunction,
+    filterByPriceFunction,
     filterByDiscountFunction, 
     filterByRatingFunction,
     filterByFormatFunction,
-    otherFiltersFunction,
     filterByBestSellerFunction,
     filterByInStockFunction,
-    sortByfunction 
+    sortByfunction,
+    removeDuplicateFunction
 } from ".";
 
 export const getFilteredAndSortedProductsFunction = (allProducts, filterState) => {
@@ -19,12 +21,16 @@ export const getFilteredAndSortedProductsFunction = (allProducts, filterState) =
         sortBy 
     } = filterState;
 
-    const filteredByDiscountProducts = filterByDiscountFunction(allProducts, filterByDiscount);
+    const filteredByGenreProducts = filterByGenreFunction(allProducts, filterByGenre);
+    const filteredByPriceProducts = filterByPriceFunction(filteredByGenreProducts, filterByPrice);
+    const filteredByDiscountProducts = filterByDiscountFunction(filteredByPriceProducts, filterByDiscount);
     const filteredByRatingProducts = filterByRatingFunction(filteredByDiscountProducts, filterByRating);
     const filteredByFormatProducts = filterByFormatFunction(filteredByRatingProducts, filterByFormat)
     const filteredByBestSellerProducts = filterByBestSellerFunction(filteredByFormatProducts, otherFilters);
     const filteredByInStockProducts = filterByInStockFunction(filteredByBestSellerProducts, otherFilters)
     const sortedProducts = sortByfunction(filteredByInStockProducts, sortBy);
     
-    return sortedProducts;
+    const finalProductList = removeDuplicateFunction(sortedProducts);
+
+    return finalProductList;
 }
