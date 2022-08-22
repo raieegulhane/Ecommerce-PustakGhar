@@ -1,6 +1,7 @@
 import "./product-card-vr.css";
-
+import { Link } from "react-router-dom";
 export const ProductCardVr = ({ 
+    _id,
     coverImage, 
     title, 
     author, 
@@ -13,7 +14,6 @@ export const ProductCardVr = ({
     bestSeller, 
     inStock 
 }) => {
-
     return(
         <div className="card_container card-vr">
             {
@@ -27,25 +27,27 @@ export const ProductCardVr = ({
                 </div>
             }
 
-            <img 
-                className="card-img image-100pr" 
-                src={coverImage} 
-                alt={title} 
-            />
-
             <button className="btn-icon wishlist-btn">
                 <i className="wishlist-icon fa-solid fa-heart"></i>
             </button>
+
+            <div className="img-container card-img flex-col">
+                <img 
+                    className="card-img image-100pr" 
+                    src={coverImage} 
+                    alt={title} 
+                />
+                <div className="rating-container rating_block-dark txt-sm txt-bold">  
+                    <i className="fa-solid fa-star"></i>                                                                 
+                    {stars} | {totalRatings}
+                </div> 
+            </div>
 
             <div className="card_content flex-col">
                 <div>
                     <h4 className="card-heading">{title}</h4>
                     <p className="txt-sm">{author} | {format}</p>
                 </div>
-                <div className="rating_block-dark txt-sm">  
-                    <i className="fa-solid fa-star"></i>                                                                 
-                    {stars} | {totalRatings}
-                </div> 
                 <p>
                     <span>₹{discountedPrice} </span>
                     <span className="txt-sm txt-red txt-linethrough">₹{originalPrice}</span>{" "}
@@ -53,10 +55,20 @@ export const ProductCardVr = ({
                 </p> 
             </div>
             
-            <button className="txt-sm btn btn-block btn-primary btn-wtIcon btn-sq addToCart-btn">
+            <button className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}>
                 <i className="fa-solid fa-cart-shopping"></i>{" "}
                 Add to Cart
             </button>
+
+            <Link 
+                to={`/product/${_id}`}
+                className="link-prod-det link-noDecoration"    
+            >
+                <button className="txt-sm btn btn-block btn-outline btn-sq">
+                    View Details
+                </button>
+            </Link>
+
         </div>
     );
 }

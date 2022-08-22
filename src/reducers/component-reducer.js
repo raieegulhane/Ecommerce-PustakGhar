@@ -1,23 +1,16 @@
 const initialComponetValues = {
-    productDetails: {
-        showProductDetails: false,
-        productId: "none"
-    },
+    currentProductDetails: false
 }
 
 
 const componentReducerFunction = (state, { type, payload }) => {
-    const { productDetailsModal } = state;
+    const { currentProductDetails } = state;
 
     switch (type) {
         case "PRODUCT_DETAILS":
             return { 
                 ...state, 
-                productDetails: {
-                    ...productDetails,
-                    showProductDetails: !productDetailsModal.showProductDetails,
-                    productId: payload
-                }
+                currentProductDetails: true
             }
 
         default: 

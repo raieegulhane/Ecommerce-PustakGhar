@@ -34,6 +34,7 @@ export const ProductListing = () => {
                         return(
                             <ProductCardVr 
                                 key={_id}
+                                _id={_id}
                                 title={title}
                                 author={author}
                                 originalPrice={originalPrice}

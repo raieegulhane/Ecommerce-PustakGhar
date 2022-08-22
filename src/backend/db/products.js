@@ -1,9 +1,5 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * All product names, author, description and images are obtained from amazon.in
- * */
-
 export const products = [
   {
     _id: uuid(),

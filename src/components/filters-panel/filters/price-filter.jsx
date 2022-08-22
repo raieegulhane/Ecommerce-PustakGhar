@@ -17,9 +17,11 @@ export const PriceFilter = () => {
                     max="1600"
                     step="100"
                     value={filterByPrice}
-                    onChange={(event) =>
-                        (filterDispatch({ type: "FILTER_BY_PRICE", payload: event.target.value }),
-                        console.log(event.target.value))
+                    onChange={
+                        (event) => filterDispatch({ 
+                            type: "FILTER_BY_PRICE", 
+                            payload: event.target.value 
+                        })
                     }
                 />
                 <datalist 
