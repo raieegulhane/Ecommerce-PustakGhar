@@ -1,0 +1,62 @@
+.card-hr-container {
+    height: 250px;
+    padding: 2rem 1.5rem;
+    border-bottom: 2px solid var(--grey1);
+    gap: 2rem;
+}
+
+.card-hr-container:hover {
+    border-bottom-color: var(--orange);
+    transition: 1s ease;
+}
+
+.card-img {
+    border-radius: var(--br-sq);
+}
+
+.price-container {
+    gap: 0.35rem;
+}
+
+.price {
+    font-size: 1.25rem;
+}
+
+.off-price {
+    font-size: 0.85rem;
+}
+
+.qt-wrapper {
+    margin-left: auto;
+    gap: 1rem;
+}
+
+.qt-container {
+    height: fit-content;
+    padding-right: 1.25rem;
+    border-right: 2px solid var(--grey1);
+    gap: 0.5rem;
+}
+
+.btn.qt-btn {
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--br-sq);
+}
+
+.del-btn {
+    font-size: 1rem;
+    padding-left: 1.25rem;
+}
+
+.del-btn-wl,
+.wl-btn {
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+.cart-btn {
+    font-size: 0.85rem;
+}
