@@ -20,13 +20,7 @@ export const ProductCardVr = ({
                 bestSeller &&
                 <div className="badge badge-sq">Bestseller</div>
             }
-            {
-                !inStock &&
-                <div className="card_overlay">
-                    <p>Out Of Stock</p>
-                </div>
-            }
-
+            
             <button className="btn-icon wishlist-btn">
                 <i className="wishlist-icon fa-solid fa-heart"></i>
             </button>
@@ -37,6 +31,12 @@ export const ProductCardVr = ({
                     src={coverImage} 
                     alt={title} 
                 />
+                {
+                    !inStock &&
+                    <div className="card_overlay">
+                        <p>Out Of Stock</p>
+                    </div>
+                }
                 <div className="rating-container rating_block-dark txt-sm txt-bold">  
                     <i className="fa-solid fa-star"></i>                                                                 
                     {stars} | {totalRatings}
@@ -56,8 +56,15 @@ export const ProductCardVr = ({
             </div>
             
             <button className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}>
-                <i className="fa-solid fa-cart-shopping"></i>{" "}
-                Add to Cart
+            {
+                inStock &&
+                <i className="fa-solid fa-cart-shopping"></i>
+            }
+            {
+                inStock ? 
+                <span>Add to Cart</span> :
+                <span>Out of Stock</span>
+            }
             </button>
 
             <Link 

@@ -114,8 +114,15 @@ export const ProductDetails = () => {
 
                     <div className="prod-det-btn-container flex-row flex_justify-center">
                         <button className={`btn btn-primary btn-wt-icon btn-sq prod-det-btn ${inStock ? "" : "btn-disabled"}`}>
-                            <i className="fa-solid fa-cart-shopping"></i>{" "}
-                            Add to Cart
+                            {
+                                inStock &&
+                                <i className="fa-solid fa-cart-shopping"></i>
+                            }
+                            {
+                                inStock ? 
+                                <span>Add to Cart</span> :
+                                <span>Out of Stock</span>
+                            }
                         </button>
                         <button className="btn btn-outline btn-wt-icon btn-sq prod-det-btn">
                             <i class="fa-solid fa-heart"></i>
