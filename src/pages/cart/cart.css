@@ -2,10 +2,3 @@
     padding: 1.5rem;
     gap: 1.5rem;
 }
-
-.cart-prod-container {
-    background-color: var(--bg-sec);
-    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
-    border-radius: var(--br-sq);
-    padding: 2rem;
-}
