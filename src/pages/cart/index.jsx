@@ -1,6 +1,5 @@
 import "./cart.css";
-import { CartPriceDetails, ProductCardHr } from "../../components";
-import { HrCardListing } from "../../components/hr-card-listing";
+import { CartPriceDetails, HrCardListing } from "../../components";
 
 export const Cart = () => {
 

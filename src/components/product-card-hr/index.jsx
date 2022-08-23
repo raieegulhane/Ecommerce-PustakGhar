@@ -19,7 +19,7 @@ export const ProductCardHr = ({ inCart, inWishlist }) => {
                     <p className="price-container flex-row flex_align-middle">
                         <span className="price">₹150</span> 
                         <span className="off-price txt-gray txt-linethrough">₹599</span> 
-                        <span class="off-price txt-green">74% off</span>
+                        <span className="off-price txt-green">74% off</span>
                     </p>
                     
                     {
@@ -36,7 +36,7 @@ export const ProductCardHr = ({ inCart, inWishlist }) => {
                             </div>
 
                             <button className="del-btn btn btn-link btn-wt-icon">
-                                <i class="fa-solid fa-trash"></i>
+                                <i className="fa-solid fa-trash"></i>
                                 <span>Delete</span>
                             </button>  
                         </div>  
@@ -62,7 +62,7 @@ export const ProductCardHr = ({ inCart, inWishlist }) => {
                 {
                     inWishlist &&
                     <button className="del-btn-wl btn btn-link btn-wt-icon">
-                        <i class="fa-solid fa-trash"></i>
+                        <i className="fa-solid fa-trash"></i>
                         <span>Delete</span>
                     </button>  
                 }
