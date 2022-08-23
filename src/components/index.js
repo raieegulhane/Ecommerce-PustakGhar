@@ -7,3 +7,4 @@ export { ProductListing } from "./product-listing";
 export { ProductCardVr } from "./product-card-vr";
 export { FiltersPanel } from "./filters-panel";
 export { ProductCardHr } from "./product-card-hr";
+export { CartPriceDetails } from "./cart-price-details";

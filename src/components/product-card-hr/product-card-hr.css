@@ -1,7 +1,7 @@
 .card-hr-container {
-    height: 250px;
-    padding: 2rem 1.5rem;
-    border-bottom: 2px solid var(--grey1);
+    height: 270px;
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--grey1);
     gap: 2rem;
 }
 

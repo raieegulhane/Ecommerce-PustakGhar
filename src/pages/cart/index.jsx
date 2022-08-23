@@ -1,12 +1,22 @@
 import "./cart.css";
-import { ProductCardHr } from "../../components";
+import { CartPriceDetails, ProductCardHr } from "../../components";
 
 export const Cart = () => {
+
     return(
         <div className="cart-wrapper grid grid-31layout">
             <div className="cart-prod-container">
-                <ProductCardHr />
+                <ProductCardHr 
+                    inCart={true}
+                />
+                <ProductCardHr 
+                    inCart={true}
+                />
+                <ProductCardHr 
+                    inCart={true}
+                />
             </div>
+            <CartPriceDetails />
         </div>
     );
 }
