@@ -80,8 +80,28 @@ const cartReducerFunction = (state, { type, payload }) => {
                 }
             );
 
-        case "WISHLIST_TO_CART":
-            return(1);
+        case "CART_TO_WISHLIST":
+            return(
+                [ ...wishlist].findIndex(
+                    (product) => product._id === _id
+                ) < 0 ? {
+                    ...state,
+                    cart: [ ...cart ].filter((product) => product._id !== _id),
+                    cartQuantity: cartQuantity - productQuantity,
+                    cartPrice: cartPrice - productQuantity * originalPrice,
+                    cartDiscount: cartDiscount - (originalPrice - discountedPrice),
+                    cartTotal: cartTotal - discountedPrice,
+                    wishlist: [
+                        ...wishlist,
+                        {
+                            ...payload,
+                            productQuantity: 1,
+                        }
+                    ],
+                } : {
+                    ...state
+                }
+            );
     
 
         case "REMOVE_FROM_CART":
@@ -100,7 +120,7 @@ const cartReducerFunction = (state, { type, payload }) => {
         // wishlist operations
         case "ADD_TO_WISHLIST":
             return(
-                wishlist.findIndex(
+                [ ...wishlist].findIndex(
                     (product) => product._id === _id
                 ) < 0 ? {
                     ...state,
@@ -114,10 +134,32 @@ const cartReducerFunction = (state, { type, payload }) => {
                 } : {
                     ...state
                 }
-            );;
+            );
 
-            case "CART_TO_WISHLIST":
-                return(1);
+            case "WISHLIST_TO_CART":
+            return(
+                cart.findIndex(
+                    (product) => product._id === _id
+                ) < 0 ? {
+                    ...state,
+                    cart: [
+                        ...cart,
+                        {
+                            ...payload,
+                            productQuantity: 1,
+                        }
+                    ],
+                    cartQuantity: cartQuantity + 1,
+                    cartPrice: cartPrice +  originalPrice,
+                    cartDiscount: cartDiscount + (originalPrice - discountedPrice),
+                    cartTotal: cartTotal + discountedPrice,
+                    wishlist: [ ...wishlist ].filter((product) => product._id !== _id),
+                } : {
+                    ...state
+                }
+            );
+
+            
 
         
         case "REMOVE_FROM_WISHLIST":
