@@ -1,19 +1,30 @@
 import "./cart-price-details.css";
+import { useCart } from "../../contexts";
 
 
 export const CartPriceDetails = () => {
+
+    const { 
+        cartState: { 
+            cartQuantity, 
+            cartPrice, 
+            cartDiscount, 
+            cartTotal
+        }
+    } = useCart();
+    
     return(
         <div className="cart-price-wrapper flex-col">
             <h2 className="cp-heading">Price Details</h2>
 
             <ul className="cp-list list-noBullets flex-col">
                 <li className="flex-row flex_justify-sb">
-                    <p>Price (<span>3</span> Items)</p>
-                    <p>₹ <span>1797</span></p>
+                    <p>Price (<span>{cartQuantity}</span> Items)</p>
+                    <p>₹ <span>{cartPrice}</span></p>
                 </li>
                 <li className="flex-row flex_justify-sb">
                     <p>Discounts</p>
-                    <p className="txt-green">-₹ <span>1347</span></p>
+                    <p className="txt-green">-₹ <span>{cartDiscount}</span></p>
                 </li>
                 <li className="flex-row flex_justify-sb">
                     <p>Delivery Charges</p>
@@ -23,7 +34,7 @@ export const CartPriceDetails = () => {
 
             <div className="cp-total flex-row flex_justify-sb">
                 <p className="txt-bold">Total Amount</p>
-                <p className="txt-bold">₹ <span className="total_price">495</span></p>
+                <p className="txt-bold">₹ <span className="total_price">{cartTotal}</span></p>
             </div>
 
             <button className="cp-btn btn btn-primary btn-block btn-sq">

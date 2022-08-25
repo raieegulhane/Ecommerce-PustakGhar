@@ -52,11 +52,33 @@
 }
 
 .del-btn-wl,
-.wl-btn {
+.wl-btn-container {
     margin-left: auto;
-    margin-bottom: auto;
 }
 
-.cart-btn {
-    font-size: 0.85rem;
+.wl-btn-container {
+    gap: 1rem;
 }
+
+.btn.wl-btn {
+    padding: 0.25rem 2rem;
+}
+
+.cart-btn-container {
+    margin-left: auto;
+    gap: 0.5rem;
+}
+
+.prc-rt-container {
+    gap: 1rem;
+}
+
+.rating_block-dark.wl-rating-block {
+    background-color: var(--bg-pri);
+}
+
+.btn.cart-btn {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+

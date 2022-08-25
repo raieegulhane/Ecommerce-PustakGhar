@@ -1,6 +1,10 @@
 import "./product-card-vr.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../../contexts";
+
+
 export const ProductCardVr = ({ 
+    product,
     _id,
     coverImage, 
     title, 
@@ -14,6 +18,17 @@ export const ProductCardVr = ({
     bestSeller, 
     inStock 
 }) => {
+
+    const { cartDispatch } = useCart();
+
+    const addToCartFunction = () => {
+        cartDispatch({ type: "ADD_TO_CART", payload: product });
+    }
+
+    const addToWishlistFunction = () => {
+        cartDispatch({ type: "ADD_TO_WISHLIST", payload: product });
+    }
+
     return(
         <div className="card_container card-vr">
             {
@@ -21,7 +36,10 @@ export const ProductCardVr = ({
                 <div className="badge badge-sq">Bestseller</div>
             }
             
-            <button className="btn-icon wishlist-btn">
+            <button 
+                className="btn-icon wishlist-btn"
+                onClick={addToWishlistFunction}
+            >
                 <i className="wishlist-icon fa-solid fa-heart"></i>
             </button>
 
@@ -55,7 +73,10 @@ export const ProductCardVr = ({
                 </p> 
             </div>
             
-            <button className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}>
+            <button 
+                className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
+                onClick={addToCartFunction}
+            >
             {
                 inStock &&
                 <i className="fa-solid fa-cart-shopping"></i>

@@ -17,22 +17,24 @@ export const ProductListing = () => {
 
             <div className="prod-list-container flex-row flex_justify-center">
                 {
-                    filteredAndSortedProducts.map(({ 
-                        _id, 
-                        title, 
-                        author, 
-                        originalPrice, 
-                        discountedPrice, 
-                        discount, 
-                        stars, 
-                        totalRatings, 
-                        format,
-                        inStock, 
-                        bestSeller, 
-                        coverImage 
-                    }) => {
+                    filteredAndSortedProducts.map((product) => {
+                        const { 
+                            _id, 
+                            title, 
+                            author, 
+                            originalPrice, 
+                            discountedPrice, 
+                            discount, 
+                            stars, 
+                            totalRatings, 
+                            format,
+                            inStock, 
+                            bestSeller, 
+                            coverImage 
+                        } = product
                         return(
                             <ProductCardVr 
+                                product={product}
                                 key={_id}
                                 _id={_id}
                                 title={title}

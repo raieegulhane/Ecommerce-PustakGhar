@@ -1,41 +1,105 @@
 import "./product-card-hr.css";
+import { useParam, Link } from "react-router-dom"
+import { useCart } from "../../contexts";
 
-export const ProductCardHr = ({ inCart, inWishlist }) => {
+export const ProductCardHr = ({ 
+    product,
+    _id,
+    title,
+    author,
+    originalPrice,
+    discountedPrice,
+    discount,
+    genre,
+    stars,
+    totalRatings,
+    format,
+    inStock,
+    coverImage,
+    productQuantity,
+    addedToCart,
+    inCart, 
+    inWishlist
+}) => {
+
+    const { cartDispatch } = useCart();
+
     return(
-        <div className="card-hr-wrapper">
+        <div  className="card-hr-wrapper">
             <div className="card-hr-container flex-row">
                 <img
                     className="card-img image-100pr" 
-                    src="https://m.media-amazon.com/images/I/5179mrE+WWL.jpg" 
+                    src={coverImage} 
                 />
 
                 <div className="flex-col flex_justify-sb">
                     <div>
-                        <h2>Elon Musk</h2>
-                        <p>Ashley Vancee</p>
-                        <p className="txt-bold txt-sm">Paperback</p>
+                        <h2>{title}</h2>
+                        <p>{author}</p>
+                        <p className="txt-bold txt-sm">
+                            {
+                                inWishlist &&
+                                <span>
+                                    {
+                                        genre.map((genreName, index) => {
+                                            if (index+1 === genre.length) {
+                                                return(
+                                                    <span className="genre-name">{genreName} </span>
+                                                );
+                                            } 
+                                            
+                                            return(
+                                                <span className="genre-name">{genreName}, </span>
+                                            );
+                                        })
+                                    }
+                                    {" "}|{" "}
+                                </span>
+                            }
+                            <span>{format}</span>
+                        </p>
                     </div>
 
-                    <p className="price-container flex-row flex_align-middle">
-                        <span className="price">₹150</span> 
-                        <span className="off-price txt-gray txt-linethrough">₹599</span> 
-                        <span className="off-price txt-green">74% off</span>
-                    </p>
+                    
+
+                    <div className="prc-rt-container flex-row flex_align-middle">
+                        <div className="price-container flex-row flex_align-middle">
+                            <span className="price">₹{discountedPrice}</span> 
+                            <span className="off-price txt-gray txt-linethrough">₹{originalPrice}</span> 
+                            <span className="off-price txt-green">{discount}% off</span>
+                        </div>
+                        {
+                            inWishlist &&
+                            <div className="wl-rating-block rating_block-dark txt-sm txt-bold">  
+                                <i className="fa-solid fa-star"></i>                                                                 
+                                {stars} | {totalRatings}
+                            </div> 
+                        }
+                    </div>
                     
                     {
                         inCart &&
                         <div className="flex-row flex_align-middle">
                             <div className="qt-container flex-row flex_align-middle">
-                                <button className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle">
+                                <button 
+                                    className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle"
+                                    onClick={() => cartDispatch({ type: "INCREASE_QUANTITY", payload: _id})}
+                                >
                                     <i className="fa-solid fa-plus"></i>
                                 </button>
-                                <span>5</span>
-                                <button className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle">
+                                <span>{productQuantity}</span>
+                                <button 
+                                    className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle"
+                                    onClick={() => cartDispatch({ type: "INCREASE_QUANTITY", payload: _id})}
+                                >
                                     <i className="fa-solid fa-minus"></i>
                                 </button>
                             </div>
 
-                            <button className="del-btn btn btn-link btn-wt-icon">
+                            <button 
+                                className="del-btn btn btn-link btn-wt-icon"
+                                onClick={() => cartDispatch({ type: "REMOVE_FROM_CART", payload: product})}
+                            >
                                 <i className="fa-solid fa-trash"></i>
                                 <span>Delete</span>
                             </button>  
@@ -44,26 +108,60 @@ export const ProductCardHr = ({ inCart, inWishlist }) => {
 
                     {
                         inWishlist &&
-                        <button className="cart-btn btn btn-primary btn-wt-icon btn-sq">
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <span className="">Add to Cart</span>
-                        </button>  
+                        <div className="wl-btn-container flex-row">
+                            <button 
+                                className={`txt-sm wl-btn btn btn-primary btn-wt-icon btn-sq ${inStock ? "" : "btn-disabled"}`}
+                                onClick={() => cartDispatch({ type: "WISHLIST_TO_CART", payload: product})}
+                            >
+                                {
+                                    inStock &&
+                                    <i className="fa-solid fa-cart-shopping"></i>
+                                }
+                                {
+                                    inStock ? 
+                                    <span>Add to Cart</span> :
+                                    <span>Out of Stock</span>
+                                }
+                            </button> 
+                            <Link 
+                                to={`/product/${_id}`}
+                                className="txt-sm wl-btn link-noDecoration btn btn-outline btn-wt-icon btn-sq"
+                                onClick={() => cartDispatch({ type: "CART_TO_WISHLIST", payload: product})}
+                            >
+                                View Details
+                            </Link> 
+                        </div>
                     }
                 </div>
 
                 {
                     inCart &&
-                    <button className="wl-btn btn btn-outline btn-wt-icon btn-sq">
-                        <i className="fa-solid fa-heart"></i>
-                        <span className="">Move to Wishlist</span>
-                    </button>  
+                    <div className="cart-btn-container flex-col">
+                        <button 
+                            className="txt-sm cart-btn link-noDecoration btn btn-primary btn-wt-icon btn-sq"
+                            onClick={() => cartDispatch({ type: "CART_TO_WISHLIST", payload: product})}
+                        >
+                            <i className="fa-solid fa-heart"></i>
+                            <span className="">Move to Wishlist</span>
+                        </button>
+                        <Link 
+                            to={`/product/${_id}`}
+                            className="txt-sm cart-btn wl-btn link-noDecoration btn btn-outline btn-wt-icon btn-sq"
+                            onClick={() => cartDispatch({ type: "CART_TO_WISHLIST", payload: product})}
+                        >
+                            View Details
+                        </Link> 
+                    </div> 
                 }
 
                 {
                     inWishlist &&
-                    <button className="del-btn-wl btn btn-link btn-wt-icon">
+                    <button 
+                        className="del-btn-wl btn btn-link btn-wt-icon"
+                        onClick={() => cartDispatch({ type: "REMOVE_FROM_WISHLIST", payload: product})}
+                    >
                         <i className="fa-solid fa-trash"></i>
-                        <span>Delete</span>
+                        <span>Remove</span>
                     </button>  
                 }
 
