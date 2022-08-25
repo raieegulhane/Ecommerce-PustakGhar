@@ -17,7 +17,6 @@ export const ProductCardHr = ({
     inStock,
     coverImage,
     productQuantity,
-    addedToCart,
     inCart, 
     inWishlist
 }) => {
@@ -83,14 +82,14 @@ export const ProductCardHr = ({
                             <div className="qt-container flex-row flex_align-middle">
                                 <button 
                                     className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle"
-                                    onClick={() => cartDispatch({ type: "INCREASE_QUANTITY", payload: _id})}
+                                    onClick={() => cartDispatch({ type: "INCREASE_QUANTITY", payload: product})}
                                 >
                                     <i className="fa-solid fa-plus"></i>
                                 </button>
                                 <span>{productQuantity}</span>
                                 <button 
-                                    className="qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle"
-                                    onClick={() => cartDispatch({ type: "INCREASE_QUANTITY", payload: _id})}
+                                    className={`qt-btn txt-sm btn btn-primary flex flex_justify-center flex_align-middle ${productQuantity > 1 ? "" : "btn-disabled"}`}
+                                    onClick={() => cartDispatch({ type: "DECREASE_QUANTITY", payload: product})}
                                 >
                                     <i className="fa-solid fa-minus"></i>
                                 </button>

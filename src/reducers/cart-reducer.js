@@ -16,10 +16,12 @@ const cartReducerFunction = (state, { type, payload }) => {
     const { _id, originalPrice, discountedPrice, productQuantity } = payload;
 
     switch(type) {
+
+        // cart operations
         case "ADD_TO_CART":
             return(
                 cart.findIndex(
-                    (item) => item._id === _id
+                    (product) => product._id === _id
                 ) < 0 ? {
                     ...state,
                     cart: [
@@ -27,7 +29,6 @@ const cartReducerFunction = (state, { type, payload }) => {
                         {
                             ...payload,
                             productQuantity: 1,
-                            addedToCart: true,
                         }
                     ],
                     cartQuantity: cartQuantity + 1,
@@ -39,12 +40,55 @@ const cartReducerFunction = (state, { type, payload }) => {
                 }
             );
 
+        case "INCREASE_QUANTITY":
+            return(
+                {
+                    ...state, 
+                    cart: [ ...cart ].map((product) => {
+                        if (product._id === _id) {
+                            return({
+                                ...product, 
+                                productQuantity: productQuantity + 1
+                            });
+                        }
+                        return(product);
+                    }),
+                    cartQuantity: cartQuantity + 1,
+                    cartPrice: cartPrice + originalPrice,
+                    cartDiscount: cartDiscount + (originalPrice - discountedPrice),
+                    cartTotal: cartTotal + discountedPrice
+                }
+            );
+
+        case "DECREASE_QUANTITY":
+            return(
+                {
+                    ...state, 
+                    cart: [ ...cart ].map((product) => {
+                        if (product._id === _id) {
+                            return({
+                                ...product, 
+                                productQuantity: productQuantity <= 1 ? productQuantity : productQuantity - 1
+                            });
+                        }
+                        return(product);
+                    }),
+                    cartQuantity: productQuantity <= 1 ? cartQuantity : cartQuantity - 1,
+                    cartPrice: productQuantity <= 1 ? cartPrice : cartPrice - originalPrice,
+                    cartDiscount: productQuantity <= 1 ? cartDiscount : cartDiscount - (originalPrice - discountedPrice),
+                    cartTotal: productQuantity <= 1 ? cartTotal : cartTotal - discountedPrice
+                }
+            );
+
+        case "WISHLIST_TO_CART":
+            return(1);
+    
 
         case "REMOVE_FROM_CART":
             return(
                 {
                     ...state,
-                    cart: cart.filter((item) => item._id !== _id),
+                    cart: [ ...cart ].filter((product) => product._id !== _id),
                     cartQuantity: cartQuantity - productQuantity,
                     cartPrice: cartPrice - productQuantity * originalPrice,
                     cartDiscount: cartDiscount - (originalPrice - discountedPrice),
@@ -53,25 +97,36 @@ const cartReducerFunction = (state, { type, payload }) => {
             );
 
 
+        // wishlist operations
         case "ADD_TO_WISHLIST":
-            return(1);
+            return(
+                wishlist.findIndex(
+                    (product) => product._id === _id
+                ) < 0 ? {
+                    ...state,
+                    wishlist: [
+                        ...wishlist,
+                        {
+                            ...payload,
+                            productQuantity: 1,
+                        }
+                    ],
+                } : {
+                    ...state
+                }
+            );;
 
-        case "WISHLIST_TO_CART":
-            return(1);
-
-        case "CART_TO_WISHLIST":
-            return(1);
-
-        case "INCREASE_QUANTITY":
-            return(1);
-
-        case "DECREASE_QUANTITY":
-            return(1);
+            case "CART_TO_WISHLIST":
+                return(1);
 
         
-
         case "REMOVE_FROM_WISHLIST":
-            return(1);
+            return(
+                {
+                    ...state,
+                    wishlist: [ ...wishlist ].filter((product) => product._id !== _id),
+                }
+            );
 
         default:
             return(initialCartValues);

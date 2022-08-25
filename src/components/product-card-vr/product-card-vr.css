@@ -1,4 +1,5 @@
 .card-vr {
+    position: relative;
     width: 230px;
     gap: 0;
     padding: 0.75rem;
@@ -19,10 +20,11 @@
 }
 
 .wishlist-btn {
-    color: var(--white);
     position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    color: var(--white);
 }
 
 .wishlist-btn:hover {
@@ -72,7 +74,8 @@
     color: var(--white);
     font-size: 1.75rem;
     font-weight: bold;
-    opacity: 0.75;
+    opacity: 0.9;
+    height: 25%;
 }
 
 .badge {

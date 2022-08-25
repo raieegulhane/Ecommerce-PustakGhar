@@ -29,7 +29,6 @@ export const HrCardListing = ({ inCart, inWishlist }) => {
                             format,
                             coverImage,
                             productQuantity,
-                            addedToCart
                         } = product;
 
                         return(
@@ -45,7 +44,6 @@ export const HrCardListing = ({ inCart, inWishlist }) => {
                                 format={format}
                                 coverImage={coverImage}
                                 productQuantity={productQuantity}
-                                addedToCart={addedToCart}
                                 inCart={inCart}
                                 inWishlist={inWishlist}
                             />
