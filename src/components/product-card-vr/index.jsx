@@ -85,15 +85,15 @@ export const ProductCardVr = ({
                         className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
                         onClick={addToCartFunction}
                     >
-                    {
-                        inStock &&
-                        <i className="fa-solid fa-cart-shopping"></i>
-                    }
-                    {
-                        inStock ? 
-                        <span>Add to Cart</span> :
-                        <span>Out of Stock</span>
-                    }
+                        {
+                            inStock &&
+                            <i className="fa-solid fa-cart-shopping"></i>
+                        }
+                        {
+                            inStock ? 
+                            <span>Add to Cart</span> :
+                            <span>Out of Stock</span>
+                        }
                     </button>
                 ) : (
                     <Link

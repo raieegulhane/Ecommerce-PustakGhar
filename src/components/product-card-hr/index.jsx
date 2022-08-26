@@ -1,5 +1,5 @@
 import "./product-card-hr.css";
-import { useParam, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useCart } from "../../contexts";
 
 export const ProductCardHr = ({ 
