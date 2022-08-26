@@ -19,7 +19,7 @@ export const ProductCardVr = ({
     inStock 
 }) => {
 
-    const { cartDispatch } = useCart();
+    const { cartState: { cart, wishlist }, cartDispatch } = useCart();
 
     const addToCartFunction = () => {
         cartDispatch({ type: "ADD_TO_CART", payload: product });
@@ -27,6 +27,12 @@ export const ProductCardVr = ({
 
     const addToWishlistFunction = () => {
         cartDispatch({ type: "ADD_TO_WISHLIST", payload: product });
+    }
+
+    const checkInWishlistFunction = (productId) => {
+        return wishlist.findIndex((product) => product._id === productId) < 0 ? 
+            "wl-not-selected" : 
+            "wl-selected";
     }
 
     return(
@@ -37,7 +43,7 @@ export const ProductCardVr = ({
             }
             
             <button 
-                className="btn-icon wishlist-btn"
+                className={`btn-icon wishlist-btn ${checkInWishlistFunction(_id)}`}
                 onClick={addToWishlistFunction}
             >
                 <i className="wishlist-icon fa-solid fa-heart"></i>
@@ -73,20 +79,36 @@ export const ProductCardVr = ({
                 </p> 
             </div>
             
-            <button 
-                className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
-                onClick={addToCartFunction}
-            >
             {
-                inStock &&
-                <i className="fa-solid fa-cart-shopping"></i>
+                cart.findIndex((product) => product._id === _id) < 0 ? (
+                    <button 
+                        className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
+                        onClick={addToCartFunction}
+                    >
+                    {
+                        inStock &&
+                        <i className="fa-solid fa-cart-shopping"></i>
+                    }
+                    {
+                        inStock ? 
+                        <span>Add to Cart</span> :
+                        <span>Out of Stock</span>
+                    }
+                    </button>
+                ) : (
+                    <Link
+                        to={"/cart"}
+                        className="link-noDecoration addToCart-btn"
+                    >
+                        <button 
+                            className="txt-sm btn btn-block btn-primary btn-wt-icon btn-sq"
+                        >
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>Go to cart</span>
+                        </button>
+                    </Link>
+                )
             }
-            {
-                inStock ? 
-                <span>Add to Cart</span> :
-                <span>Out of Stock</span>
-            }
-            </button>
 
             <Link 
                 to={`/product/${_id}`}
