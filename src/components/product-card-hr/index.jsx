@@ -21,7 +21,11 @@ export const ProductCardHr = ({
     inWishlist
 }) => {
 
-    const { cartDispatch } = useCart();
+    const { cartState: { cart, wishlist }, cartDispatch } = useCart();
+
+    const checkInWishlistFunction = (id) => {
+        return wishlist.findIndex((product) => product._id === id) < 0 ? false : true;
+    }
 
     return(
         <div  className="card-hr-wrapper">
@@ -58,8 +62,6 @@ export const ProductCardHr = ({
                             <span>{format}</span>
                         </p>
                     </div>
-
-                    
 
                     <div className="prc-rt-container flex-row flex_align-middle">
                         <div className="price-container flex-row flex_align-middle">
@@ -108,20 +110,33 @@ export const ProductCardHr = ({
                     {
                         inWishlist &&
                         <div className="wl-btn-container flex-row">
-                            <button 
-                                className={`txt-sm wl-btn btn btn-primary btn-wt-icon btn-sq ${inStock ? "" : "btn-disabled"}`}
-                                onClick={() => cartDispatch({ type: "WISHLIST_TO_CART", payload: product})}
-                            >
-                                {
-                                    inStock &&
-                                    <i className="fa-solid fa-cart-shopping"></i>
-                                }
-                                {
-                                    inStock ? 
-                                    <span>Add to Cart</span> :
-                                    <span>Out of Stock</span>
-                                }
-                            </button> 
+                            {
+                                cart.findIndex((product) => product._id === _id) < 0 ? (
+                                    <button 
+                                        className={`txt-sm wl-btn btn btn-primary btn-wt-icon btn-sq ${inStock ? "" : "btn-disabled"}`}
+                                        onClick={() => cartDispatch({ type: "WISHLIST_TO_CART", payload: product})}
+                                    >
+                                        {
+                                            inStock &&
+                                            <i className="fa-solid fa-cart-shopping"></i>
+                                        }
+                                        {
+                                            inStock ? 
+                                            <span>Add to Cart</span> :
+                                            <span>Out of Stock</span>
+                                        }
+                                    </button> 
+                                ) : (
+                                    <Link
+                                        to={"/cart"}
+                                        className="link-noDecoration txt-sm wl-btn btn btn-primary btn-wt-icon btn-sq"
+                                    >
+                                        <i class="fa-solid fa-circle-check"></i>
+                                        <span>Go to cart</span>
+                                    </Link>
+                                )
+                            }
+                           
                             <Link 
                                 to={`/product/${_id}`}
                                 className="txt-sm wl-btn link-noDecoration btn btn-outline btn-wt-icon btn-sq"
@@ -137,11 +152,17 @@ export const ProductCardHr = ({
                     inCart &&
                     <div className="cart-btn-container flex-col">
                         <button 
-                            className="txt-sm cart-btn link-noDecoration btn btn-primary btn-wt-icon btn-sq"
+                            className={`txt-sm cart-btn link-noDecoration btn btn-primary btn-wt-icon btn-sq ${checkInWishlistFunction(_id) ? "btn-disabled" : ""}`}
                             onClick={() => cartDispatch({ type: "CART_TO_WISHLIST", payload: product})}
                         >
                             <i className="fa-solid fa-heart"></i>
-                            <span className="">Move to Wishlist</span>
+                            <span>
+                                {
+                                    checkInWishlistFunction(_id) ? 
+                                    "Item in Wishlist" : 
+                                    "Add to Wishlist"
+                                }
+                            </span>
                         </button>
                         <Link 
                             to={`/product/${_id}`}

@@ -51,12 +51,12 @@
     padding-left: 1.25rem;
 }
 
-.del-btn-wl,
-.wl-btn-container {
+.del-btn-wl {
     margin-left: auto;
 }
 
 .wl-btn-container {
+    margin-right: auto;
     gap: 1rem;
 }
 

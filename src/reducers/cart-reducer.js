@@ -103,7 +103,6 @@ const cartReducerFunction = (state, { type, payload }) => {
                 }
             );
     
-
         case "REMOVE_FROM_CART":
             return(
                 {
@@ -136,31 +135,28 @@ const cartReducerFunction = (state, { type, payload }) => {
                 }
             );
 
-            case "WISHLIST_TO_CART":
-            return(
-                cart.findIndex(
-                    (product) => product._id === _id
-                ) < 0 ? {
-                    ...state,
-                    cart: [
-                        ...cart,
-                        {
-                            ...payload,
-                            productQuantity: 1,
-                        }
-                    ],
-                    cartQuantity: cartQuantity + 1,
-                    cartPrice: cartPrice +  originalPrice,
-                    cartDiscount: cartDiscount + (originalPrice - discountedPrice),
-                    cartTotal: cartTotal + discountedPrice,
-                    wishlist: [ ...wishlist ].filter((product) => product._id !== _id),
-                } : {
-                    ...state
-                }
-            );
-
-            
-
+        case "WISHLIST_TO_CART":
+        return(
+            cart.findIndex(
+                (product) => product._id === _id
+            ) < 0 ? {
+                ...state,
+                cart: [
+                    ...cart,
+                    {
+                        ...payload,
+                        productQuantity: 1,
+                    }
+                ],
+                cartQuantity: cartQuantity + 1,
+                cartPrice: cartPrice +  originalPrice,
+                cartDiscount: cartDiscount + (originalPrice - discountedPrice),
+                cartTotal: cartTotal + discountedPrice,
+                wishlist: [ ...wishlist ].filter((product) => product._id !== _id),
+            } : {
+                ...state
+            }
+        );
         
         case "REMOVE_FROM_WISHLIST":
             return(
@@ -170,6 +166,7 @@ const cartReducerFunction = (state, { type, payload }) => {
                 }
             );
 
+            
         default:
             return(initialCartValues);
     }

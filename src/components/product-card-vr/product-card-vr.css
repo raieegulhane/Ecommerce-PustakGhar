@@ -16,7 +16,7 @@
 }
 
 .wishlist-icon {
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 .wishlist-btn {
@@ -24,10 +24,17 @@
     top: 1rem;
     right: 1rem;
     z-index: 2;
-    color: var(--white);
 }
 
 .wishlist-btn:hover {
+    color: var(--red);
+}
+
+.wl-not-selected {
+    color: var(--white);
+}
+
+.wl-selected {
     color: var(--red);
 }
 
