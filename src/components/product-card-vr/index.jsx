@@ -26,7 +26,11 @@ export const ProductCardVr = ({
     }
 
     const addToWishlistFunction = () => {
-        cartDispatch({ type: "ADD_TO_WISHLIST", payload: product });
+        wishlist.findIndex((product) => product._id === _id) < 0 ? (
+            cartDispatch({ type: "ADD_TO_WISHLIST", payload: product }) 
+        ) : (
+            cartDispatch({ type: "REMOVE_FROM_WISHLIST", payload: product })
+        )
     }
 
     const checkInWishlistFunction = (productId) => {

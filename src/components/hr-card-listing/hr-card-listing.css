@@ -8,3 +8,23 @@
 .prod-list-header.hr-cl-header {
     margin-bottom: 2rem;
 }
+
+.empty-list-container {
+    height: 30vh;
+    gap: 1rem;
+}
+
+.empty-list-txt {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.empty-list-btn-container {
+    width: 45%;
+    gap: 1rem;
+}
+
+.empty-list-btn {
+    width: 100%;
+}
+
