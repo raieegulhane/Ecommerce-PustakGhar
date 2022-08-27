@@ -13,4 +13,3 @@ export { Checkout } from "./checkout";
 
 export { Bestsellers } from "./bestsellers";
 export { TodaysDeals } from "./todays-deals";
-export { Bookclub } from "./book-club";

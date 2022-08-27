@@ -1,23 +1,18 @@
 import "./product-listing.css";
 import { ProductCardVr } from "../../components";
-import { products } from "../../backend/db/products";
-import { useFilter } from "../../contexts";
-import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 
-export const ProductListing = () => {
-    const { filterState } = useFilter();
-    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(products, filterState);
-
+export const ProductListing = ({ title, productList }) => {
+    
     return(
         <div className="prod-list-wrapper">
             <div className="prod-list-header flex-row flex_justify-center">
-                <h1 className="product_heading txt-underline">All Books</h1>
+                <h1 className="product_heading txt-underline">{title}</h1>
             </div>
 
             <div className="prod-list-container flex-row flex_justify-center">
                 {
-                    filteredAndSortedProducts.map((product) => {
+                    productList.map((product) => {
                         const { 
                             _id, 
                             title, 
@@ -54,7 +49,7 @@ export const ProductListing = () => {
                 }
 
                 {
-                    filteredAndSortedProducts.length < 1 &&
+                    productList.length < 1 &&
                     <p>Sorry! Products you are searching for are unavailable at the moment.</p>
                 }
             </div>

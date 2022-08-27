@@ -12,8 +12,7 @@ import {
     Cart,
     Checkout,
     Bestsellers,
-    TodaysDeals,
-    Bookclub
+    TodaysDeals
 } from "../pages";
 
 export const SiteRoutes = () => {
@@ -33,7 +32,6 @@ export const SiteRoutes = () => {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/bestsellers" element={<Bestsellers />} />
             <Route path="/today's-deals" element={<TodaysDeals />} />
-            <Route path="/book-club" element={<Bookclub />} />
         </Routes>
     );
 }

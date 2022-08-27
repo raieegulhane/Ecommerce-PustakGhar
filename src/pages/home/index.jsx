@@ -3,7 +3,7 @@ import { DiscountDisplay, GenreDisplay, Hero } from "../../components";
 
 export const Home = () => {
     return(
-        <div>
+        <div className="home-wrapper">
             <Hero />
             <GenreDisplay />
             <DiscountDisplay />

@@ -52,3 +52,9 @@
     background-color: transparent;
     color: var(--primary);
 }
+
+.btn.btn-floating {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    font-size: 1.5rem;
+}
