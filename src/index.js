@@ -5,7 +5,6 @@ import App from "./App";
 import { makeServer } from "./server";
 import { FilterProvider, CartProvider } from "./contexts";
 
-// Call make Server
 makeServer();
 
 ReactDOM.render(
