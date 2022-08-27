@@ -9,3 +9,4 @@ export { FiltersPanel } from "./filters-panel";
 export { ProductCardHr } from "./product-card-hr";
 export { CartPriceDetails } from "./cart-price-details";
 export { HrCardListing } from "./hr-card-listing";
+export { PasswordInput } from "./password-input";

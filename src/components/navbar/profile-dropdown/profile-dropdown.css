@@ -40,9 +40,9 @@
 }
 
 .dd-sec {
-  gap: 0.5rem;
+  padding: 0.5rem 0;
   border-bottom: 1px solid var(--grey3);  
-  padding-bottom: 1.5rem;
+  gap: 0.5rem;
 }
 
 .username-display {
@@ -59,9 +59,10 @@
 }
 
 .btn.dd-btn {
-    padding: 0.5rem 1rem;
     font-size: 1rem;
     font-weight: normal;
+    padding: 0.25rem 1rem;
+    margin-top: 0.75rem;
 }
 
 .dd-link {

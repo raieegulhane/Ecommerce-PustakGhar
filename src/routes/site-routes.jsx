@@ -19,11 +19,14 @@ export const SiteRoutes = () => {
     return(
         <Routes>
             <Route path="/mockman" element={<Mockman />} />            
-            <Route path="*" element={<NotFound />} />            
+            <Route path="*" element={<NotFound />} />    
+
             <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />            
+            <Route path="/login" element={<Login />} /> 
+
             <Route path="/" element={<Home />} />            
-            <Route path="/home" element={<Home />} />            
+            <Route path="/home" element={<Home />} />  
+                      
             <Route path="/account" element={<Account />} />            
             <Route path="/bookstore" element={<Bookstore />} /> 
             <Route path="/product/:productId" element={<ProductDetails />} />

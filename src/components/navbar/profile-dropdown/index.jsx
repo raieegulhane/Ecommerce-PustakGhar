@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./profile-dropdown.css";
 
 export const ProfileDropdown = ({ onClick }) => {
@@ -19,10 +19,13 @@ export const ProfileDropdown = ({ onClick }) => {
                         <p className="email-display">email@example.com</p>
                     </section>
 
-                    <button 
-                        className="btn btn-outline btn-sq dd-btn">
-                        Login/Signup
-                    </button>
+                    <Link to={"/login"}
+                        className="link-noDecoration btn-wt-icon btn btn-outline btn-sq dd-btn"
+                        onClick={onClick}
+                    >
+                        <span>Login</span>
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </Link>
                 </section>
 
                 <NavLink 
