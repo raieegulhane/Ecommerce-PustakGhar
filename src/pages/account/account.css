@@ -1,0 +1,47 @@
+.account-wrapper {
+    padding: 1.5rem;
+}
+
+.account-container {
+    background-color: var(--bg-sec);
+    width: 70%;
+    padding: 2rem;
+    border-radius: var(--br-sq);
+    margin: auto;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.acc-content-container {
+    padding: 2.5rem 0;
+}
+
+.avatar-char {
+    background-color: var(--black);
+    color: var(--primary);
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.avatar-lg {
+    width: 9rem;
+    height: 9rem;
+}
+
+.avatar-border-outer {
+    border: 4px solid var(--primary);
+}
+
+.acc-user-details {
+    padding: 1.5rem;
+}
+
+.acc-user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn.btn-link.acc-logout-btn {
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding: 1rem;
+}
