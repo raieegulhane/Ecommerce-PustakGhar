@@ -24,6 +24,21 @@
     font-size: 1rem;
 }
 
+.dd-close-btn {
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+}
+
+.btn.btn-icon.dd-close-btn {
+    color: var(--grey1);
+    font-size: 0.8rem;
+}
+
+.btn.btn-icon.dd-close-btn:hover {
+    color: var(--primary);
+}
+
 .dd-sec {
   gap: 0.5rem;
   border-bottom: 1px solid var(--grey3);  

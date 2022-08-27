@@ -113,6 +113,28 @@
     color: var(--black);
 }
 
+.nav-sec-item.item-no-hov:hover {
+    background-color: transparent;
+    color: var(--white);
+    cursor: default;
+}
+
 .nav-sec-icon {
     font-size: 0.85rem;
 }
+
+.acc-cart-link {
+    position: relative;
+}
+
+.badge.cart-badge {
+    top: -2px;
+    left: 0.5rem;
+    background-color: var(--red);
+    color: var(--black);
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+

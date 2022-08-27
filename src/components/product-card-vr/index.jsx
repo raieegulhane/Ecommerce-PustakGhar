@@ -43,7 +43,7 @@ export const ProductCardVr = ({
         <div className="card_container card-vr">
             {
                 bestSeller &&
-                <div className="badge badge-sq">Bestseller</div>
+                <div className="badge badge-sq">Best Seller</div>
             }
             
             <button 

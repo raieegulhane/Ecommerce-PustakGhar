@@ -8,6 +8,10 @@ function App() {
       <Navbar />
       <SiteRoutes />
       <Footer />
+
+      <a className="link-noDecoration btn btn-floating btn-rd btn-primary flex flex_justify-center flex_align-middle" href="#"> 
+        <i className="fa-solid fa-arrow-up"></i>
+      </a> 
     </div>
   );
 }
