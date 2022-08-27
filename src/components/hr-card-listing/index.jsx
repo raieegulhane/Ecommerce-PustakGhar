@@ -56,22 +56,22 @@ export const HrCardListing = ({ inCart, inWishlist }) => {
                         ) : (
                             <div className="empty-list-container flex-col flex_justify-center flex_align-middle"> 
                                 <p className="empty-list-txt">Your cart is empty.</p>
-                                    <div className="empty-list-btn-container flex-row flex_justify-sb">
-                                        <Link
-                                            to={"/bookstore"}
-                                            className="empty-list-btn btn btn-primary btn-sq btn-wt-icon link-noDecoration"
-                                        >
-                                            <i className="fa-solid fa-book-open"></i>
-                                            <span>Go to Bookstore</span>
-                                        </Link>
-                                        <Link
-                                            to={"/wishlist"}
-                                            className="empty-list-btn btn btn-outline btn-sq btn-wt-icon link-noDecoration"
-                                        >
-                                            <i className="fa-solid fa-heart"></i>
-                                            <span>Go to Wishlist</span>
-                                        </Link>
-                                    </div>
+                                <div className="empty-list-btn-container flex-row flex_justify-sb">
+                                    <Link
+                                        to={"/bookstore"}
+                                        className="empty-list-btn btn btn-primary btn-sq btn-wt-icon link-noDecoration"
+                                    >
+                                        <i className="fa-solid fa-book-open"></i>
+                                        <span>Go to Bookstore</span>
+                                    </Link>
+                                    <Link
+                                        to={"/wishlist"}
+                                        className="empty-list-btn btn btn-outline btn-sq btn-wt-icon link-noDecoration"
+                                    >
+                                        <i className="fa-solid fa-heart"></i>
+                                        <span>Go to Wishlist</span>
+                                    </Link>
+                                </div>
                             </div>
                         )
                     }
@@ -125,22 +125,22 @@ export const HrCardListing = ({ inCart, inWishlist }) => {
                         ) : (
                             <div className="empty-list-container flex-col flex_justify-center flex_align-middle"> 
                                 <p className="empty-list-txt">Your wishlist is empty.</p>
-                                    <div className="empty-list-btn-container flex-row flex_justify-sb">
-                                        <Link
-                                            to={"/bookstore"}
-                                            className="empty-list-btn btn btn-primary btn-sq btn-wt-icon link-noDecoration"
-                                        >
-                                            <i className="fa-solid fa-book-open"></i>
-                                            <span>Go to Bookstore</span>
-                                        </Link>
-                                        <Link
-                                            to={"/cart"}
-                                            className="empty-list-btn btn btn-outline btn-sq btn-wt-icon link-noDecoration"
-                                        >
-                                            <i className="fa-solid fa-heart"></i>
-                                            <span>Go to Cart</span>
-                                        </Link>
-                                    </div>
+                                <div className="empty-list-btn-container flex-row flex_justify-sb">
+                                    <Link
+                                        to={"/bookstore"}
+                                        className="empty-list-btn btn btn-primary btn-sq btn-wt-icon link-noDecoration"
+                                    >
+                                        <i className="fa-solid fa-book-open"></i>
+                                        <span>Go to Bookstore</span>
+                                    </Link>
+                                    <Link
+                                        to={"/cart"}
+                                        className="empty-list-btn btn btn-outline btn-sq btn-wt-icon link-noDecoration"
+                                    >
+                                        <i className="fa-solid fa-cart-shopping"></i>
+                                        <span>Go to Cart</span>
+                                    </Link>
+                                </div>
                             </div>
                         )
                     }

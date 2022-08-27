@@ -35,7 +35,7 @@ export const GenreDisplay = () => {
                 to="/bookstore"
                 className="genre-btn btn btn-wt-icon btn-outline btn-sq link-noDecoration"
             >
-                <span>Discover More Categories</span>
+                <span>Discover All Categories</span>
                 <i className="fa-solid fa-angles-right"></i>
             </NavLink>
         </div>
