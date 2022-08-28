@@ -126,7 +126,7 @@ export const Navbar = () => {
                             className="nav-sec-item"
                             onClick={() => (setShowProfileDropdown(false))}    
                         >
-                            <span className="txt-bold">ALL CATEGORIES</span>
+                            <span>All Categories</span>
                         </NavLink>
                     </li>
                     <li>

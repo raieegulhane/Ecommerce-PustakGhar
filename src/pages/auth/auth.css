@@ -29,6 +29,10 @@
     outline: none;
 }
 
+.auth-inp:focus {
+    border: 1px solid var(--orange);
+}
+
 .form-btn-container {
     padding-top: 1rem;
     gap: 0.5rem;

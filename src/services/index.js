@@ -1,5 +1,5 @@
 // auth-services
-import { signupService } from "./auth-services/signup-service";
-import { loginService } from "./auth-services/login-service";
+export { signupService } from "./auth-services/signup-service";
+export { loginService } from "./auth-services/login-service";
 
 // product-services

@@ -1,5 +1,6 @@
 /* stylesheets */
 @import url("https://matrixui.netlify.app/assets/stylesheet.css");
+@import url("react-toastify/dist/ReactToastify.css");
 @import url("./variables.css");
 @import url("./buttons.css");
 
@@ -12,10 +13,6 @@ body {
     color: var(--gray1);
 }
 
-input:focus {
-    border-left: 3px solid var(--primary);
-}
-
 .txt-primary {
     color: var(--primary);
 }
@@ -26,4 +23,8 @@ input:focus {
 
 .txt-red {
     color: var(--red);
+}
+
+.toast-box {
+    margin-top: 1rem;
 }

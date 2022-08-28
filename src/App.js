@@ -1,10 +1,25 @@
 import "./styles/styles.css";
+import { ToastContainer } from "react-toastify";
 import { SiteRoutes } from "./routes"
 import { Footer, Navbar } from "./components";
+import { useAuth } from "./contexts";
+
 
 function App() {
+  const { authState } = useAuth();
+  // console.log(authState.userData.firstName)
+
   return (
     <div className="App">
+      <ToastContainer
+        className="toast-box"
+				theme="colored"
+        position="top-right"
+        autoClose={1000}
+        newestOnTop={true}
+        pauseOnFocusLoss
+        pauseOnHover
+      />
       <Navbar />
       <SiteRoutes />
       <Footer />

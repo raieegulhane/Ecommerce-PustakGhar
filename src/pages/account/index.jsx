@@ -1,8 +1,25 @@
 import "./account.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../../contexts";
 
 
 export const Account = () => {
+
+    const navigate = useNavigate();
+
+    const { authState: { userData }, authDispatch } = useAuth();
+    const { firstName, lastName, email } = userData;
+
+    const logoutHandler = () => {
+        localStorage.removeItem("auth-token");
+        localStorage.removeItem("user-data");
+
+        authDispatch({ type: "AUTH_CLEAR" });
+
+        navigate("/login");
+        toast.success("Logged out.")
+    }
 
     return(
         <div className="account-wrapper">
@@ -13,16 +30,21 @@ export const Account = () => {
 
                 <div className="acc-content-container flex-col flex_align-middle">
                     <div className="avatar-border-outer avatar-circle">
-                        <div class="avatar-char avatar-circle avatar-lg avatar-border">
-                            JD
+                        <div className="avatar-char avatar-circle avatar-lg avatar-border">
+                            {`${firstName[0]}${lastName[0]}`}
                         </div>
                     </div>
 
                     <div className="acc-user-details flex-col flex_align-middle">
-                        <p className="acc-user-name">Jane Doe</p>
-                        <p>example@email.com</p>
+                        <p className="acc-user-name">
+                            {`${firstName} ${lastName}`}
+                        </p>
+                        <p>{email}</p>
 
-                        <button className="acc-logout-btn btn btn-link btn-wt-icon">
+                        <button 
+                            className="acc-logout-btn btn btn-link btn-wt-icon"
+                            onClick={logoutHandler}
+                        >
                             <span>Logout</span>
                             <i className="fa-solid fa-arrow-right-from-bracket"></i>
                         </button>

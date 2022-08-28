@@ -1,9 +1,78 @@
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import { signupService } from "../../services";
+import { useAuth } from "../../contexts";
 import { PasswordInput } from "../../components";
 
 
 export const Signup = () => {
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const { authDispatch } = useAuth();
+
+    const initialUserDetails = {
+        email: "",
+        password: "",
+        confirmPassword: "",
+        firstName: "",
+        lastName: ""
+    }
+
+    const [ userDetails, setUserDetails ] = useState(initialUserDetails);
+    const {
+        email,
+        password,
+        confirmPassword,
+        firstName,
+        lastName
+    } = userDetails;
+
+    const updateUserDetails = (event) => {
+        const { name, value } = event.target;
+        setUserDetails((userDetails) => ({ ...userDetails, [name]: value }))
+    }
+
+    const signupHandler = async (event) => {
+        event.preventDefault();
+
+        try {
+            if (!email || !password || !confirmPassword || !firstName || !lastName) {
+                toast.warning("All fields must be filled.");
+                return;
+            }
+
+            const response = await signupService(userDetails);
+            const { createdUser, encodedToken } = response.data;
+
+            authDispatch({
+                type: "AUTH_INIT",
+                payload: {
+                    isAuth: true,
+                    authToken: encodedToken,
+                    userData: { ...createdUser }
+                }
+            })
+
+            localStorage.setItem("auth-token", encodedToken);
+            localStorage.setItem("user-data", JSON.stringify(createdUser));
+
+            navigate(location?.state?.from ? location.state.from : "/home", {replace: true});
+            toast.success("Signed up");
+        } catch (error) {
+            console.log("SIGNUP_ERROR: ", error);
+            if (error.message.includes(422)) {
+                toast.error("Email already exists. Login instead")
+                return;
+            }
+            
+            toast.error("Error occured while signing in.");
+        }
+    }
+
     return(
         <div className="auth-wrapper">
             <div className="auth-container">
@@ -24,8 +93,8 @@ export const Signup = () => {
                             type="text"
                             placeholder="Jane"
                             required
-                            // onChange={updateUserDetails}
-                            // value={firstName}
+                            onChange={updateUserDetails}
+                            value={firstName}
                         />
                     </label>
                     <label
@@ -40,8 +109,8 @@ export const Signup = () => {
                             type="text"
                             placeholder="Doe"
                             required
-                            // onChange={updateUserDetails}
-                            // value={lastName}
+                            onChange={updateUserDetails}
+                            value={lastName}
                         />
                     </label>
                     <label
@@ -56,8 +125,8 @@ export const Signup = () => {
                             type="email"
                             placeholder="email@example.com"
                             required
-                            // onChange={updateUserDetails}
-                            // value={email}
+                            onChange={updateUserDetails}
+                            value={email}
                         />
                     </label>
                     <label
@@ -69,18 +138,18 @@ export const Signup = () => {
                             id={"newPassword"}
                             name={"password"}
                             placeholder={"Minimum 6 charachters"}
-                            // onChange={updateUserDetails}
-                            // value={password}
+                            onChange={updateUserDetails}
+                            value={password}
                         />
                     </label>
-                    {/* {
+                    {
                         password.length !== 0 && 
                         password.length < 6 &&
                         <div className="warning">
                             <i className="fa-solid fa-circle-exclamation"></i>
                             <p>Password should have atleast 6 characters</p>
                         </div>
-                    } */}
+                    }
                     <label
                         className="flex-col"
                         htmlFor="confirmPassword"
@@ -90,22 +159,22 @@ export const Signup = () => {
                             id={"confirmPassword"}
                             name={"confirmPassword"}
                             placeholder={"Re-enter password"}
-                            // onChange={updateUserDetails}
-                            // value={confirmPassword}
+                            onChange={updateUserDetails}
+                            value={confirmPassword}
                         />
                     </label>
-                    {/* {
+                    {
                         confirmPassword.length > 0 &&
                         password !== confirmPassword &&
                         <div className="warning">
                             <i className="fa-solid fa-circle-exclamation"></i>
                             <p>Passwords do not match.</p>
                         </div>
-                    } */}
+                    }
                     <div className="form-btn-container flex-col">
                         <button
                             className="btn btn-primary btn-wt-icon btn-sq"
-                            // onClick={signupHandler}
+                            onClick={signupHandler}
                         >
                             <span>Continue</span>
                             <i className="fa-solid fa-angles-right"></i>
