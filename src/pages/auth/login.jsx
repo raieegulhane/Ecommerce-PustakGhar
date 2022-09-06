@@ -24,7 +24,7 @@ export const Login = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate(location?.state?.from ? location.state.from : "/home", { replace: true });
+        isAuth && navigate(location?.state?.from ? location.state.from : -1, { replace: true });
     }, [isAuth])
 
     const loginHandler = async (event, formData, guestLoginStatus) => {
@@ -45,7 +45,7 @@ export const Login = () => {
             localStorage.setItem("auth-token", encodedToken);
             localStorage.setItem("user-data", JSON.stringify(foundUser));
 
-            navigate(location?.state?.from ? location.state.from : "/home", { replace: true });
+            navigate(location?.state?.from ? location.state.from : -1, { replace: true });
 
             guestLoginStatus ?
                 toast.success("Logged in as guest.") :

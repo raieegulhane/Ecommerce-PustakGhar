@@ -1,11 +1,13 @@
 import "./bestsellers.css";
-import { products } from "../../backend/db/products";
+import { useProduct } from "../../contexts";
 import { ProductListing } from "../../components";
 
 
 export const Bestsellers = () => {
 
-    const bestSellerProducts = [ ...products ].filter(
+    const { productState: { productList } } = useProduct();
+
+    const bestSellerProducts = [ ...productList ].filter(
         (item) => item.bestSeller === true
     )
 

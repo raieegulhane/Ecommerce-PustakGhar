@@ -127,14 +127,22 @@
     position: relative;
 }
 
-.badge.cart-badge {
-    top: -2px;
-    left: 0.5rem;
+.badge.cart-badge,
+.badge.wishlist-badge {
+    top: -3px;
     background-color: var(--red);
     color: var(--black);
-    font-size: 0.9rem;
+    font-size: rem;
     font-weight: bold;
     width: 1.25rem;
     height: 1.25rem;
+    border: 2px solid var(--black);
 }
 
+.badge.cart-badge {
+    left: 0.5rem;
+}
+
+.badge.wishlist-badge {
+    left: 1rem;
+}

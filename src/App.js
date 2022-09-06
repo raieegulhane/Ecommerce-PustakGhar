@@ -14,8 +14,8 @@ function App() {
       <ToastContainer
         className="toast-box"
 				theme="colored"
-        position="top-right"
-        autoClose={1000}
+        position="bottom-left"
+        autoClose={1500}
         newestOnTop={true}
         pauseOnFocusLoss
         pauseOnHover

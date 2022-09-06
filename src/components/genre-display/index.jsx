@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { genreDisplayList } from "./genre-list";
 
 export const GenreDisplay = () => {
+    
     return(
         <div className="genre-wrapper flex-col flex_align-middle">
             <h1 className="genre-heading">Genre</h1>

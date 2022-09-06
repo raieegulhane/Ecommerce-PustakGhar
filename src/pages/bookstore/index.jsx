@@ -1,13 +1,13 @@
 import "./bookstore.css";
-import { products } from "../../backend/db/products";
-import { useFilter } from "../../contexts";
+import { useProduct, useFilter } from "../../contexts";
 import { FiltersPanel, ProductListing } from "../../components";
 import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 export const Bookstore = () => {
 
+    const { productState: { productList} } = useProduct();
     const { filterState } = useFilter();
-    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(products, filterState);
+    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(productList, filterState);
 
     return(
         <div className="bookstore-wrapper grid grid-13layout">

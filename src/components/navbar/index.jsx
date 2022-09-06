@@ -7,7 +7,7 @@ import { ProfileDropdown } from "./profile-dropdown";
 
 export const Navbar = () => {
 
-    const { cartState: { cart, cartQuantity } } = useCart();
+    const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
@@ -91,8 +91,16 @@ export const Navbar = () => {
                             className={navPriActiveClass}
                             onClick={() => (setShowProfileDropdown(false))}    
                         >
-                            <i className="fa-solid fa-heart nav-pri-icon"></i>
-                            <span className="nav-pri-txt">Wishlist</span>
+                            <div className="acc-cart-link flex-col">
+                                {
+                                    wishlist.length > 0 &&
+                                    <div className="wishlist-badge badge badge-cr flex flex_align-middle flex_justify-center">
+                                        {wishlist.length}
+                                    </div>
+                                }
+                                <i className="fa-solid fa-heart nav-pri-icon"></i>
+                                <span className="nav-pri-txt">Wishlist</span>
+                            </div>
                         </NavLink>
                     </li>
                     <li>
@@ -104,8 +112,8 @@ export const Navbar = () => {
                             <div className="acc-cart-link flex-col">
                                 {
                                     cart.length > 0 &&
-                                    <div class="cart-badge badge badge-cr flex flex_align-middle flex_justify-center">
-                                        {cartQuantity}
+                                    <div className="cart-badge badge badge-cr flex flex_align-middle flex_justify-center">
+                                        {cart.length}
                                     </div>
                                 }
                                 <i className="fa-solid fa-cart-shopping nav-pri-icon"></i>

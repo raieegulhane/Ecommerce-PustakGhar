@@ -1,5 +1,5 @@
 import "./auth.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { signupService } from "../../services";
@@ -12,7 +12,7 @@ export const Signup = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { authDispatch } = useAuth();
+    const { authState: {isAuth}, authDispatch } = useAuth();
 
     const initialUserDetails = {
         email: "",
@@ -21,7 +21,6 @@ export const Signup = () => {
         firstName: "",
         lastName: ""
     }
-
     const [ userDetails, setUserDetails ] = useState(initialUserDetails);
     const {
         email,
@@ -31,6 +30,10 @@ export const Signup = () => {
         lastName
     } = userDetails;
 
+    useEffect(() => {
+        isAuth && navigate(location?.state?.from ? location.state.from : -1, { replace: true });
+    }, [isAuth])
+    
     const updateUserDetails = (event) => {
         const { name, value } = event.target;
         setUserDetails((userDetails) => ({ ...userDetails, [name]: value }))
@@ -60,8 +63,8 @@ export const Signup = () => {
             localStorage.setItem("auth-token", encodedToken);
             localStorage.setItem("user-data", JSON.stringify(createdUser));
 
-            navigate(location?.state?.from ? location.state.from : "/home", {replace: true});
-            toast.success("Signed up");
+            navigate(location?.state?.from ? location.state.from : -1, {replace: true});
+            toast.success("Account created successfully");
         } catch (error) {
             console.log("SIGNUP_ERROR: ", error);
             if (error.message.includes(422)) {

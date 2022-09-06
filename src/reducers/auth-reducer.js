@@ -19,7 +19,7 @@ const authReducerFunction = (state, { type, payload }) => {
             return({ ...initialAuthData });
 
         default:
-            return new Error("Error occured in authentication.")
+            return new Error("Error occured in authentication.");
     }
 }
 

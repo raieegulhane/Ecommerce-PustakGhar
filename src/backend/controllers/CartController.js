@@ -45,13 +45,15 @@ export const addItemToCartHandler = function (schema, request) {
       );
     }
     const userCart = schema.users.findBy({ _id: userId }).cart;
-    const { product } = JSON.parse(request.requestBody);
-    userCart.push({
-      ...product,
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-      qty: 1,
-    });
+    const product = JSON.parse(request.requestBody);
+    if (userCart.findIndex((item) => item._id === product._id) < 0) {
+      userCart.push({
+        ...product,
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+        qty: 1,
+      });
+    }
     this.db.users.update({ _id: userId }, { cart: userCart });
     return new Response(201, {}, { cart: userCart });
   } catch (error) {
@@ -128,7 +130,7 @@ export const updateCartItemHandler = function (schema, request) {
       });
     } else if (action.type === "decrement") {
       userCart.forEach((product) => {
-        if (product._id === productId) {
+        if (product._id === productId && product.qty > 1) {
           product.qty -= 1;
           product.updatedAt = formatDate();
         }

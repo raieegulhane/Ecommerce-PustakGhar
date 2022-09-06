@@ -1,42 +1,91 @@
 import "./product-card-vr.css";
-import { Link } from "react-router-dom";
-import { useCart } from "../../contexts";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth, useCart } from "../../contexts";
+import { addToCartService, addToWishlistService, deleteFromWishlistService } from "../../services";
+import { useEffect, useState } from "react";
 
 
-export const ProductCardVr = ({ 
-    product,
-    _id,
-    coverImage, 
-    title, 
-    author, 
-    stars, 
-    totalRatings, 
-    discountedPrice, 
-    originalPrice, 
-    discount, 
-    format, 
-    bestSeller, 
-    inStock 
-}) => {
+export const ProductCardVr = ({ product }) => {
+    const { 
+        _id,
+        coverImage, 
+        title, 
+        author, 
+        stars, 
+        totalRatings, 
+        discountedPrice, 
+        originalPrice, 
+        discount, 
+        format, 
+        bestSeller, 
+        inStock 
+    } = product;
 
+    const navigate = useNavigate();
+
+    const { authState: { isAuth, authToken } } = useAuth();
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
+    const [ inCart, setInCart ] = useState(false);    
+    const [ inWishlist, setInwishlist ] = useState(false);
 
-    const addToCartFunction = () => {
-        cartDispatch({ type: "ADD_TO_CART", payload: product });
+    useEffect (() => {
+        if (cart.findIndex((item) => item._id === _id) < 0) {
+            setInCart(false);
+        }
+        if (wishlist.findIndex((item) => item._id === _id) < 0) {
+            setInwishlist(false);
+        }
+    }, [wishlist, _id]);
+
+    const addToCartFunction = async () => {
+        if (inCart) {
+            navigate("/cart");
+        } else {
+            if (!isAuth) {
+                navigate("/login")
+                toast.info("Please login to continue.");
+            } else {
+                try {
+                    const { data: { cart }} = await addToCartService(product, authToken);
+                    cartDispatch({ type: "SET_CART", payload: cart });
+                    setInCart(true);
+                    toast.success("Book added to the cart");
+                } catch (error) {
+                    console.log("ERROR__ADD_TO_CART: ", error);
+                    toast.error("Problem occured while adding to cart.");
+                }
+            }
+        }
     }
 
-    const addToWishlistFunction = () => {
-        wishlist.findIndex((product) => product._id === _id) < 0 ? (
-            cartDispatch({ type: "ADD_TO_WISHLIST", payload: product }) 
-        ) : (
-            cartDispatch({ type: "REMOVE_FROM_WISHLIST", payload: product })
-        )
+    const addToWishlistFunction = async () => {
+        if (!isAuth) {
+            navigate("/login")
+            toast.info("Please login to continue.");
+        } else {
+            try {
+                const { data: { wishlist}} = await addToWishlistService(product, authToken);
+                cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
+                setInwishlist(true)
+                toast.success("Book added to wishlist")
+            } catch (error) {
+                console.log("ERROR__ADD_TO_WISHLIST: ", error);
+                toast.error("Problem occured while adding to wishlist.");
+            }
+        }
     }
 
-    const checkInWishlistFunction = (productId) => {
-        return wishlist.findIndex((product) => product._id === productId) < 0 ? 
-            "wl-not-selected" : 
-            "wl-selected";
+    const removeFromWishlistFunction = async () => {
+        try {
+            const { data: { wishlist }} = await deleteFromWishlistService(_id, authToken);
+            cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
+            setInwishlist(false)
+            toast.info("Book removed from wishlist")
+        } catch (error) {
+            console.log("ERROR__REMOVE_FROM_WISHLIST: ", error);
+            toast.error("Problem occured while adding to wishlist.");
+        }
     }
 
     return(
@@ -47,8 +96,8 @@ export const ProductCardVr = ({
             }
             
             <button 
-                className={`btn-icon wishlist-btn ${checkInWishlistFunction(_id)}`}
-                onClick={addToWishlistFunction}
+                className={`btn-icon wishlist-btn ${inWishlist ? "wl-selected" : "wl-not-selected"}`}
+                onClick={inWishlist ? removeFromWishlistFunction : addToWishlistFunction}
             >
                 <i className="wishlist-icon fa-solid fa-heart"></i>
             </button>
@@ -83,46 +132,33 @@ export const ProductCardVr = ({
                 </p> 
             </div>
             
-            {
-                cart.findIndex((product) => product._id === _id) < 0 ? (
-                    <button 
-                        className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
-                        onClick={addToCartFunction}
-                    >
-                        {
-                            inStock &&
-                            <i className="fa-solid fa-cart-shopping"></i>
-                        }
-                        {
-                            inStock ? 
-                            <span>Add to Cart</span> :
-                            <span>Out of Stock</span>
-                        }
-                    </button>
-                ) : (
-                    <Link
-                        to={"/cart"}
-                        className="link-noDecoration addToCart-btn"
-                    >
-                        <button 
-                            className="txt-sm btn btn-block btn-primary btn-wt-icon btn-sq"
-                        >
-                            <i class="fa-solid fa-circle-check"></i>
-                            <span>Go to cart</span>
-                        </button>
-                    </Link>
-                )
-            }
-
-            <Link 
-                to={`/product/${_id}`}
-                className="link-prod-det link-noDecoration"    
+            <button 
+                className={`txt-sm btn btn-block btn-primary btn-wt-icon btn-sq addToCart-btn ${inStock ? "" : "btn-disabled"}`}
+                onClick={addToCartFunction}
             >
-                <button className="txt-sm btn btn-block btn-outline btn-sq">
-                    View Details
-                </button>
-            </Link>
+                {
+                    inStock && !inCart &&
+                    <i className="fa-solid fa-cart-shopping"></i>
+                }
+                {
+                    inCart &&
+                    <i className="fa-solid fa-circle-check"></i>
+                }
+                {
+                    inStock ? (
+                        inCart ? 
+                        <span>Go To Cart</span> :
+                        <span>Add to Cart</span>
+                    ) : <span>Out of Stock</span>
+                }
+            </button>
 
+            <button 
+                className="link-prod-det txt-sm btn btn-block btn-outline btn-sq"
+                onClick={() => navigate(`/product/${_id}`)}
+            >
+                View Details
+            </button>
         </div>
     );
 }

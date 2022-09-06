@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { makeServer } from "./server";
-import { AuthProvider, FilterProvider, CartProvider } from "./contexts";
+import { AuthProvider, ProductProvider, FilterProvider, CartProvider } from "./contexts";
 
 makeServer();
 
@@ -11,11 +11,13 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <FilterProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </FilterProvider>
+        <ProductProvider>
+          <FilterProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FilterProvider>
+        </ProductProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,

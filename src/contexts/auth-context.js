@@ -5,7 +5,23 @@ import { initialAuthData, authReducerFunction } from "../reducers";
 const AuthContext = createContext(initialAuthData);
 
 const AuthProvider = ({ children }) => {
-    const [ authState, authDispatch ] = useReducer(authReducerFunction, initialAuthData);
+
+    const getInitialAuthVAlues = () => {
+        const authToken = localStorage.getItem("auth-token");
+        const userData = JSON.parse(localStorage.getItem("user-data"));
+
+        if (authToken) {
+            return {
+                isAuth: true,
+                authToken: authToken,
+                userData: userData
+            }
+        }
+
+        return { ...initialAuthData };
+    }
+
+    const [ authState, authDispatch ] = useReducer(authReducerFunction, getInitialAuthVAlues());
 
     return(
         <AuthContext.Provider 
