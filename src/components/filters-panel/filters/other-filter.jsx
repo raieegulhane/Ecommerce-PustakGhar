@@ -24,7 +24,7 @@ export const OtherFilter = () => {
                                         type="checkbox" 
                                         name="other-filter"
                                         value={value}
-                                        checked={otherFilters.value}
+                                        checked={otherFilters[value]}
                                         onChange={() => filterDispatch({ type: actionType })}    
                                     />
                                     {filterOption}

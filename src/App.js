@@ -1,13 +1,20 @@
 import "./styles/styles.css";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { SiteRoutes } from "./routes"
 import { Footer, Navbar } from "./components";
-import { useAuth } from "./contexts";
-
 
 function App() {
-  const { authState } = useAuth();
-  // console.log(authState.userData.firstName)
+  const location = useLocation();
+
+  const handleScrollToTop = () => {
+		window.scrollTo(0, 0);
+	};
+
+  useEffect(() => {
+		handleScrollToTop();
+	}, [location.pathname]);
 
   return (
     <div className="App">

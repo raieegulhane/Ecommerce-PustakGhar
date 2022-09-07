@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addToCartService, addToWishlistService, getProductByIdService } from "../../services";
-import { useAuth, useCart } from "../../contexts";
+import { useAuth, useCart, useProduct } from "../../contexts";
 
 export const ProductDetails = () => {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ export const ProductDetails = () => {
     const { productId } = useParams();
     const { authState: { isAuth, authToken }} = useAuth();
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
-    const [ currProduct, setCurrProduct ] = useState({});
+    const [ currentProduct, setCurrentProduct ] = useState({});
     const {
         title,
         author,
@@ -26,43 +26,44 @@ export const ProductDetails = () => {
         bestSeller,
         description,
         coverImage
-    } = currProduct;
+    } = currentProduct;
     const [ inCart, setInCart ] = useState(false);
     const [ inWishlist, setInWishlist ] = useState(false);
 
+    const fetchProduct = async () => {
+        try {
+            const { data: { product }} = await getProductByIdService(productId);
+            setCurrentProduct({ ...product });
+        } catch (error) {
+            console.log("ERROR__PRODUCT_DETAILS: ", error);
+            toast.error("Problem occured while loading details.")
+        }
+    }
+
     useEffect (() => {
-        (async () => {
-            try {
-                const { data: { product }} = await getProductByIdService(productId);
-                setCurrProduct({ ...product })
-            } catch (error) {
-                console.log("ERROR__PRODUCT_DETAILS: ", error);
-                toast.error("Problem occured while loading details.")
-            }
-        })();
+        fetchProduct()
     }, [productId]);
 
     useEffect (() => {
-        if (cart.findIndex((item) => item._id === productId) < 0) {
-            setInCart(false);
+        if (cart.find((item) => item._id === productId)) {
+            setInCart(true);
         }
-
-        if (wishlist.findIndex((item) => item._id === productId) < 0) {
-            setInWishlist(false);
+        if (wishlist.find((item) => item._id === productId)) {
+            setInWishlist(true);
         }
-    }, [productId, cart, wishlist])
+    }, [productId]);
 
     const addToCartFunction = async () => {
         if (inCart) {
             navigate("/cart");
         } else {
             if (!isAuth) {
-                navigate("/login");
                 toast.info("Please login to continue.");
+                return navigate("/login", { state: { from: `/product/${productId}` } });
             }
 
             try {
-                const { data: { cart }} = await addToCartService(currProduct, authToken);
+                const { data: { cart }} = await addToCartService(currentProduct, authToken);
                 cartDispatch({ type: "SET_CART", payload: cart });
                 setInCart(true);
                 toast.success("Book added to cart.");
@@ -80,7 +81,7 @@ export const ProductDetails = () => {
         }
 
         try {
-            const { data: { wishlist }} = await addToWishlistService(currProduct, authToken);
+            const { data: { wishlist }} = await addToWishlistService(currentProduct, authToken);
             cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
             setInWishlist(true);
             toast.success("Book added to wishlist.");

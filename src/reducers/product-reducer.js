@@ -12,12 +12,6 @@ const productReducerFunction = (state, { type, payload }) => {
                 productList: [ ...payload ]
             });
 
-        case "FETCH_CATEGORIES": 
-            return ({
-                ...state,
-                categoryList: [ ...payload ]
-            });
-
         default: 
             return new Error("Error occured in authentication.");
     }

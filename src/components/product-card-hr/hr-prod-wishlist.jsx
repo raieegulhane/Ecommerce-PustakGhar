@@ -8,6 +8,7 @@ import { useAuth, useCart } from "../../contexts";
 export const WishlistCardHr = ({ product }) => {
     const {
         _id,
+        id,
         title,
         author,
         originalPrice,
@@ -128,7 +129,7 @@ export const WishlistCardHr = ({ product }) => {
                         </button> 
                         <button 
                             className="txt-sm wl-btn btn btn-outline btn-wt-icon btn-sq"
-                            onClick={() => navigate(`/product/${_id}`)}
+                            onClick={() => navigate(`/product/${id}`)}
                         >
                             View Details
                         </button> 

@@ -2,11 +2,12 @@ import "./navbar.css";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
-import { useCart } from "../../contexts";
+import { useAuth, useCart } from "../../contexts";
 import { ProfileDropdown } from "./profile-dropdown";
 
 export const Navbar = () => {
 
+    const { authState: { isAuth } } = useAuth();
     const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -93,7 +94,7 @@ export const Navbar = () => {
                         >
                             <div className="acc-cart-link flex-col">
                                 {
-                                    wishlist.length > 0 &&
+                                    isAuth && wishlist.length > 0 &&
                                     <div className="wishlist-badge badge badge-cr flex flex_align-middle flex_justify-center">
                                         {wishlist.length}
                                     </div>
@@ -111,7 +112,7 @@ export const Navbar = () => {
                         >
                             <div className="acc-cart-link flex-col">
                                 {
-                                    cart.length > 0 &&
+                                    isAuth && cart.length > 0 &&
                                     <div className="cart-badge badge badge-cr flex flex_align-middle flex_justify-center">
                                         {cart.length}
                                     </div>

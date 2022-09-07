@@ -24,7 +24,7 @@ export const Login = () => {
     }
 
     useEffect(() => {
-        isAuth && navigate(location?.state?.from ? location.state.from : -1, { replace: true });
+        isAuth && navigate(location?.state?.from ? location.state.from : "/home", { replace: true });
     }, [isAuth])
 
     const loginHandler = async (event, formData, guestLoginStatus) => {

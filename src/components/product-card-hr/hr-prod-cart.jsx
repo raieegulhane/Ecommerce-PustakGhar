@@ -12,6 +12,7 @@ import {
 export const CartCardHr = ({ product }) => {
     const {
         _id,
+        id,
         title,
         author,
         originalPrice,
@@ -141,7 +142,7 @@ export const CartCardHr = ({ product }) => {
                     </button>
                     <button 
                         className="txt-sm cart-btn btn btn-outline btn-wt-icon btn-sq"
-                        onClick={() => navigate(`/product/${_id}`)}
+                        onClick={() => navigate(`/product/${id}`)}
                     >
                         View Details
                     </button> 
