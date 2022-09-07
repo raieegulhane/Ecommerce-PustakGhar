@@ -2,8 +2,6 @@
     position: relative;
     background-color: var(--grey4);
     padding: 2rem;
-    /* border-top: 1px solid var(--white); */
-    /* border-bottom: 1px solid var(--white)/; */
     gap: 2rem;
 }
 
@@ -23,18 +21,25 @@
     width: 100%;
 }
 
+.home-genre-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: var(--br-rd);
+}
+
 .genre-img {
     max-width: 175px;
-    margin-bottom: 1rem;
     box-shadow: -7px -7px 15px rgba(90, 90, 90, 0.3), 7px 7px 15px rgba(0, 0, 0, 0.75);
 }
 
 .genre-img:hover {
-    border: 5px solid var(--grey4);
+    border: 5px solid transparent;
 }
 
-.btn-link.genre-name {
+.genre-name {
     color: var(--white);
+    padding-top: 1rem;
 }
 
 .btn.genre-btn {
