@@ -1,25 +1,18 @@
 import "./cart-price-details.css";
 import { useCart } from "../../contexts";
-
+import { getCartPricingDetails } from "../../utility-functions";
 
 export const CartPriceDetails = () => {
+    const { cartState: { cart } } = useCart();
+    const { cartQty, cartPrice, cartDiscount, cartTotal } = getCartPricingDetails(cart);
 
-    const { 
-        cartState: { 
-            cartQuantity, 
-            cartPrice, 
-            cartDiscount, 
-            cartTotal
-        }
-    } = useCart();
-    
     return(
         <div className="cart-price-wrapper flex-col">
             <h2 className="cp-heading">Price Details</h2>
 
             <ul className="cp-list list-noBullets flex-col">
                 <li className="flex-row flex_justify-sb">
-                    <p>Price (<span>{cartQuantity}</span> Items)</p>
+                    <p>Price (<span>{cartQty}</span> Items)</p>
                     <p>₹ <span>{cartPrice}</span></p>
                 </li>
                 <li className="flex-row flex_justify-sb">

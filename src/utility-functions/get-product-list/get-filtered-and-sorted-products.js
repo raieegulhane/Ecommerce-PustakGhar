@@ -8,7 +8,7 @@ import {
     filterByInStockFunction,
     sortByfunction,
     removeDuplicateFunction
-} from ".";
+} from "..";
 
 export const getFilteredAndSortedProductsFunction = (allProducts, filterState) => {
     const {  
