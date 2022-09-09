@@ -1,4 +1,5 @@
 import "./cart-price-details.css";
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts";
 import { getCartPricingDetails } from "../../utility-functions";
 
@@ -30,9 +31,13 @@ export const CartPriceDetails = () => {
                 <p className="txt-bold">₹ <span className="total_price">{cartTotal}</span></p>
             </div>
 
-            <button className="cp-btn btn btn-primary btn-block btn-sq">
-                Proceed to Payment
-            </button>
+            <Link 
+                to={"/address"}
+                className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
+            >
+                Proceed to Buy
+                <i className="fa-solid fa-angles-right"></i>
+            </Link>
         </div>
     );
 }

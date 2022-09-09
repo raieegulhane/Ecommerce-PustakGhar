@@ -3,13 +3,8 @@
 }
 
 .nf-404-container {
-    background-color: var(--bg-sec);
     width: 70%;
-    padding: 2rem;
-    border-radius: var(--br-sq);
-    margin: auto;
     gap: 1rem;
-    box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.15);
 }
 
 .icon-404-pri {

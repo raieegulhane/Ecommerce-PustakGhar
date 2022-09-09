@@ -9,6 +9,7 @@ export { Bookstore } from "./bookstore";
 export { ProductDetails } from "./product-details";
 export { Wishlist } from "./wishlist";
 export { Cart } from "./cart";
+export { Address } from "./address";
 export { Checkout } from "./checkout";
 
 export { Bestsellers } from "./bestsellers";

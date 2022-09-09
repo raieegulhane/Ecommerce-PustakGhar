@@ -1,4 +1,3 @@
-import "./bestsellers.css";
 import { useProduct } from "../../contexts";
 import { ProductListing } from "../../components";
 
@@ -12,8 +11,8 @@ export const Bestsellers = () => {
     )
 
     return(
-        <div className="bestseller-wrapper">
-            <div className="bestseller-container">
+        <div className="main-wrapper">
+            <div className="container-75">
                 <ProductListing 
                     title={"Best Sellers"}
                     productList={bestSellerProducts}

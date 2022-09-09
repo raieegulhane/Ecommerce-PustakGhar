@@ -9,8 +9,8 @@ export const TodaysDeals = () => {
     const todaysDealsList = [ ...productList ].filter((item) => item.discount >= 40)
 
     return(
-        <div className="bestseller-wrapper">
-            <div className="bestseller-container">
+        <div className="main-wrapper">
+            <div className="container-75">
                 <ProductListing 
                     title={"Today's Deals - 40% and Up Discounts!!"}
                     productList={todaysDealsList}

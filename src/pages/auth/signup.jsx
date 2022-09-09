@@ -78,9 +78,9 @@ export const Signup = () => {
 
     return(
         <div className="auth-wrapper">
-            <div className="auth-container">
-        <       div className="prod-list-header flex-row flex_justify-center">
-                    <h1 className="product_heading txt-underline">Sign Up</h1>
+            <div className="main-container container-fit">
+        <       div className="main-header flex-row flex_justify-center">
+                    <h1 className="main-heading txt-underline">Sign Up</h1>
                 </div>
 
                 <form className="auth-form flex-col">

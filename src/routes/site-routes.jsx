@@ -10,6 +10,7 @@ import {
     ProductDetails,
     Wishlist,
     Cart,
+    Address,
     Checkout,
     Bestsellers,
     TodaysDeals
@@ -40,6 +41,7 @@ export const SiteRoutes = () => {
                 <Route path="/account" element={<Account />} />            
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/address" element={<Address />} />
                 <Route path="/checkout" element={<Checkout />} />
             </Route>
         </Routes>

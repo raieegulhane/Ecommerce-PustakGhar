@@ -1,0 +1,29 @@
+.main-wrapper {
+    padding: 1.5rem;
+}
+
+.main-container {
+    background-color: var(--bg-sec);
+    padding: 2rem;
+    border-radius: var(--br-sq);
+    margin: auto;
+    box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.container-75 {
+    width: 75%;
+    margin: auto;
+}
+
+.container-fit {
+    width: fit-content;
+}
+
+.main-header {
+    padding: 0 2rem 2rem 2rem;
+    border-bottom: 1px solid var(--grey1);
+}
+
+.main-heading {
+    text-decoration-color: var(--primary);
+}

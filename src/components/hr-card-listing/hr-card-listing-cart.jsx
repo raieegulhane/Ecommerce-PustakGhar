@@ -10,8 +10,10 @@ export const CartHrCardListing = ({ inCart, inWishlist }) => {
 
     return(
         <div className="hr-cl-wrapper">
-            <div className="hr-cl-header prod-list-header flex-row flex_justify-center">
-                <h1 className="product_heading txt-underline">Shopping Cart</h1>
+            <div className="main-header flex-row flex_justify-center">
+                <h1 className="main-heading txt-underline">
+                    Shopping Cart
+                </h1>
             </div>
 
             <div className="hr-cl-container">

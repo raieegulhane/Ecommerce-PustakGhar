@@ -12,7 +12,7 @@ export const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { authState: { isAuth, userData }, authDispatch } = useAuth();
+    const { authState: { isAuth }, authDispatch } = useAuth();
 
     const initialLoginCreds = { email: "", password: "" };
     const [loginCreds, setLoginCreds] = useState(initialLoginCreds);
@@ -78,12 +78,11 @@ export const Login = () => {
         loginHandler(event, { email: "janedoe@example.com", password: "janeDoe123"}, true);
     }
 
-
     return(
         <div className="auth-wrapper">
-            <div className="auth-container">
-                <div className="prod-list-header flex-row flex_justify-center">
-                    <h1 className="product_heading txt-underline">Login</h1>
+            <div className="main-container container-fit">
+                <div className="main-header flex-row flex_justify-center">
+                    <h1 className="main-heading txt-underline">Login</h1>
                 </div>
 
                 <form className="auth-form flex-col">

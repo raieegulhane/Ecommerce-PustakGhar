@@ -43,7 +43,7 @@ export const GenreDisplay = () => {
                                     />
                                 </button>
                                 <h4 
-                                    className="genre-name"
+                                    className="home-genre-name"
                                 >
                                     {genreName}
                                 </h4>

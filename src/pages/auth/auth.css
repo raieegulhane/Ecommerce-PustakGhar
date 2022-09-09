@@ -2,15 +2,6 @@
     padding: 2rem;
 }
 
-.auth-container {
-    background-color: var(--bg-sec);
-    width: fit-content;
-    padding: 2rem;
-    border-radius: var(--br-sq);
-    margin: auto;
-    box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.15);
-}
-
 .auth-form {
     padding: 2rem;
     gap: 1rem;

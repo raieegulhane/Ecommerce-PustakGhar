@@ -22,10 +22,10 @@ export const Account = () => {
     }
 
     return(
-        <div className="account-wrapper">
-            <div className="account-container">
-                <div className="prod-list-header flex-row flex_justify-center">
-                    <h1 className="product_heading txt-underline">User Account</h1>
+        <div className="main-wrapper">
+            <div className="main-container container-75">
+                <div className="main-header flex-row flex_justify-center">
+                    <h1 className="main-heading txt-underline">User Account</h1>
                 </div>
 
                 <div className="acc-content-container flex-col flex_align-middle">
@@ -52,14 +52,14 @@ export const Account = () => {
 
                     <div className="empty-list-btn-container flex-row flex_justify-sb">
                         <Link
-                            to={"/bookstore"}
+                            to={"/cart"}
                             className="empty-list-btn btn btn-primary btn-sq btn-wt-icon link-noDecoration"
                         >
                             <i className="fa-solid fa-cart-shopping"></i>
                             <span>Go to Cart</span>
                         </Link>
                         <Link
-                            to={"/cart"}
+                            to={"/wishlist"}
                             className="empty-list-btn btn btn-outline btn-sq btn-wt-icon link-noDecoration"
                         >
                             <i className="fa-solid fa-heart"></i>

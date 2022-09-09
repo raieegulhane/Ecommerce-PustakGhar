@@ -1,10 +1,9 @@
-import "./wishlist.css";
 import { WishlistHrCardListing } from "../../components";
 
 export const Wishlist = () => {
     return(
-        <div className="wl-wrapper">
-            <div className="wl-container">
+        <div className="main-wrapper">
+            <div className="container-75">
                 <WishlistHrCardListing/>
             </div>
         </div>
