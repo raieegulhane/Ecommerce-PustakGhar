@@ -1,7 +1,16 @@
 .card-hr-container {
+    gap: 2rem;
+    border-bottom: 1px solid var(--grey1);
+}
+
+.card-hr-container {
     height: 270px;
     padding: 3rem 2rem;
-    border-bottom: 1px solid var(--grey1);
+}
+
+.checkout-card-container {
+    height: 140px;
+    padding: 1.25rem 2rem;
     gap: 2rem;
 }
 

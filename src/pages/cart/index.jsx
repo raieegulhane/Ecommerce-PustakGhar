@@ -9,11 +9,13 @@ export const Cart = () => {
     return(
         <div className="main-wrapper">
             <div className={`cart-container ${cart.length > 0 ? "grid grid-31layout" : "container-75"}`}>
-                <CartHrCardListing/>
-                
+                <CartHrCardListing />
                 {
                     cart.length > 0 &&
-                    <CartPriceDetails />
+                    <CartPriceDetails 
+                        inCart={true}
+                        inCheckout={false}
+                    />
                 }
             </div>
         </div>

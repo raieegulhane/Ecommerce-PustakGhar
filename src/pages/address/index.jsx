@@ -62,7 +62,7 @@ export const Address = () => {
             payload: {
                 fullName: "Harry Potter",
                 mobileNo: "987654321",
-                flatNo: "4",
+                flatNo: "No. 4",
                 area: "Private Drive",
                 town: "Surrey",
                 pinCode: "123456",

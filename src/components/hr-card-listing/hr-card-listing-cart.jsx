@@ -4,7 +4,7 @@ import { useCart } from "../../contexts";
 import { CartCardHr } from "../../components";
 
 
-export const CartHrCardListing = ({ inCart, inWishlist }) => {
+export const CartHrCardListing = () => {
 
     const { cartState: { cart }} = useCart();
 

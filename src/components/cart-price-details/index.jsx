@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts";
 import { getCartPricingDetails } from "../../utility-functions";
 
-export const CartPriceDetails = () => {
+export const CartPriceDetails = ({ inCart, inCheckout }) => {
     const { cartState: { cart } } = useCart();
     const { cartQty, cartPrice, cartDiscount, cartTotal } = getCartPricingDetails(cart);
 
@@ -32,10 +32,14 @@ export const CartPriceDetails = () => {
             </div>
 
             <Link 
-                to={"/address"}
+                to={`${ inCart ? "/address" : "/"}`}
                 className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
             >
-                Proceed to Buy
+                {
+                    inCart ?
+                    "Proceed to Buy" :
+                    "Place Your Order and Pay"
+                }
                 <i className="fa-solid fa-angles-right"></i>
             </Link>
         </div>

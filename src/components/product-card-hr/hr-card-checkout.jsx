@@ -1,15 +1,12 @@
 import "./product-card-hr.css";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth, useCart } from "../../contexts";
 import { 
-    addToWishlistService, 
     deleteFromCartService, 
     getProductQtyService 
 } from "../../services";
 
-export const CartCardHr = ({ product }) => {
+export const CheckoutCardHr = ({ product }) => {
     const {
         _id,
         id,
@@ -23,36 +20,8 @@ export const CartCardHr = ({ product }) => {
         qty,
     } = product;
 
-    const navigate = useNavigate();
-
     const { authState: { authToken }} = useAuth();
-    const { cartState: { wishlist }, cartDispatch } = useCart();
-    const [ inWishlist, setInWishlist ] = useState(false);
-
-    useEffect (() => {
-        if (wishlist.find((item) => item._id === _id)) {
-            setInWishlist(true);
-        }
-    }, [wishlist, _id]);
-
-    const moveToWishlistFunction = async (event) => {
-        event.preventDefault();
-        if (inWishlist) {
-            navigate("/wishlist");
-        } else {
-            try {
-                const { data: { wishlist }} = await addToWishlistService(product, authToken);
-                const { data: { cart }} = await deleteFromCartService(_id, authToken);
-
-                cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
-                cartDispatch({ type: "SET_CART", payload: cart });
-                setInWishlist(true);
-            } catch (error) {
-                console.log("ERROR__MOVE_TO_WISHLIST_FROM_CART: ", error);
-                toast.error("Problem occured while adding book to wishlist.");
-            }
-        }
-    }
+    const { cartDispatch } = useCart();
 
     const deleteFromCartFunction = async (event) => {
         event.preventDefault();
@@ -78,10 +47,9 @@ export const CartCardHr = ({ product }) => {
         }
     }
 
-
     return(
         <div  className="card-hr-wrapper">
-            <div className="card-hr-container flex-row">
+            <div className="checkout-card-container flex-row">
                 <img
                     className="card-img image-100pr" 
                     src={coverImage} 
@@ -89,7 +57,7 @@ export const CartCardHr = ({ product }) => {
 
                 <div className="flex-col flex_justify-sb">
                     <div>
-                        <h2>{title}</h2>
+                        <h4>{title}</h4>
                         <p>{author}</p>
                         <p className="txt-bold txt-sm">{format}</p>
                     </div>
@@ -100,6 +68,9 @@ export const CartCardHr = ({ product }) => {
                             <span className="off-price txt-green">{discount}% off</span>
                         </div>
                     </div>
+                </div>
+
+                <div className="cart-btn-container flex-col">
                     <div className="flex-row flex_align-middle">
                         <div className="qt-container flex-row flex_align-middle">
                             <button 
@@ -124,28 +95,6 @@ export const CartCardHr = ({ product }) => {
                             <span>Delete</span>
                         </button>  
                     </div>  
-                </div>
-
-                <div className="cart-btn-container flex-col">
-                    <button 
-                        className={`txt-sm cart-btn btn btn-primary btn-wt-icon btn-sq ${inWishlist ? "btn-disabled" : ""}`}
-                        onClick={moveToWishlistFunction}
-                    >
-                        <i className="fa-solid fa-heart"></i>
-                        <span>
-                            {
-                                inWishlist ? 
-                                "Book in Wishlist" : 
-                                "Move to Wishlist"
-                            }
-                        </span>
-                    </button>
-                    <button 
-                        className="txt-sm cart-btn btn btn-outline btn-wt-icon btn-sq"
-                        onClick={() => navigate(`/product/${id}`)}
-                    >
-                        View Details
-                    </button> 
                 </div> 
             </div>
         </div>
