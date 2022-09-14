@@ -66,6 +66,7 @@
 }
 
 .search-box-container {
+    position: relative;
     background-color: var(--white);
     width: 70%;
     border-radius: var(--br-sq);

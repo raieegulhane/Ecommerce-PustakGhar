@@ -5,7 +5,7 @@ import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 export const Bookstore = () => {
 
-    const { productState: { productList} } = useProduct();
+    const { productState: { productList, searchResults, searchInput } } = useProduct();
     const { filterState } = useFilter();
     const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(productList, filterState);
 
@@ -14,7 +14,13 @@ export const Bookstore = () => {
             <FiltersPanel />
             <ProductListing 
                 title={"All Books"}
-                productList={filteredAndSortedProducts}
+                productList={
+                    searchInput.length > 0 ?
+                    searchResults : 
+                    filteredAndSortedProducts
+                }
+                searchInput={searchInput}
+                searchResults={searchResults}
             />
         </div>
     );

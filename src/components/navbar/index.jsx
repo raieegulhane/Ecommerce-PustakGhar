@@ -2,15 +2,17 @@ import "./navbar.css";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
-import { useAuth, useCart } from "../../contexts";
+import { useAuth, useProduct, useCart } from "../../contexts";
 import { ProfileDropdown } from "./profile-dropdown";
 
 export const Navbar = () => {
 
     const { authState: { isAuth } } = useAuth();
+    const { productState: { searchInput, searchResults }, productDispatch } = useProduct();
     const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+    const [searchBoxValue, setSearchBoxValue] = useState("");
 
     const navPriActiveClass = ({ isActive }) => {
         return isActive ? 
@@ -20,8 +22,25 @@ export const Navbar = () => {
 
     const navSecActiveClass = ({ isActive }) => {
         return isActive ? 
-            "nav-sec-item nav-sec-item-selected":
+            "nav-sec-item nav-sec-item-selected" :
             "nav-sec-item";
+    }
+
+    const searchBoxHandler = (event) => {
+        event.preventDefault();
+        setSearchBoxValue(event.target.value);
+    }
+
+    const searchClickHandler = () => {
+        productDispatch({ type: "SET_SEARCH_INPUT", payload: searchBoxValue })
+        productDispatch({ type: "GET_SEARCH_RESULTS"});
+        setSearchBoxValue("");
+    }
+
+    const searchEnterHandler = (event) => {
+        if (event.key === "Enter") {
+            searchClickHandler()
+        }
     }
 
     return(
@@ -62,11 +81,15 @@ export const Navbar = () => {
                         <input 
                             className="search-box"
                             type="text"
-                            placeholder="Search for books, authors and more..." 
-                            // value
-                            // onChange
+                            placeholder="Search for books, authors or genre..." 
+                            value={searchBoxValue}
+                            onChange={(e) => (searchBoxHandler(e))}
+                            onKeyPress={searchEnterHandler}
                         />
-                        <i className="fa-solid fa-magnifying-glass nav-search-icon"></i>
+                        <i 
+                            className="fa-solid fa-magnifying-glass nav-search-icon"
+                            onClick={searchClickHandler}    
+                        ></i>
                     </div>
                 </div>
 
