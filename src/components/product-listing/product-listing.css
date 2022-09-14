@@ -5,6 +5,14 @@
     box-shadow: 2px 2px 12px 0 rgba(0, 0, 0, 0.15);
 }
 
+.prod-list-details {
+    padding: 1.75rem 2.25rem 0;
+}
+
+.btn.btn-see-all {
+    padding: 0.25rem;
+}
+
 .prod-list-container {
     flex-wrap: wrap;
     padding-top: 2rem;

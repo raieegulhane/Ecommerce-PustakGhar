@@ -8,7 +8,7 @@ import { ProfileDropdown } from "./profile-dropdown";
 export const Navbar = () => {
 
     const { authState: { isAuth } } = useAuth();
-    const { productState: { searchInput, searchResults }, productDispatch } = useProduct();
+    const { productDispatch } = useProduct();
     const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -32,6 +32,7 @@ export const Navbar = () => {
     }
 
     const searchClickHandler = () => {
+        productDispatch({ type: "INIT_SEARCH", payload: true})
         productDispatch({ type: "SET_SEARCH_INPUT", payload: searchBoxValue })
         productDispatch({ type: "GET_SEARCH_RESULTS"});
         setSearchBoxValue("");

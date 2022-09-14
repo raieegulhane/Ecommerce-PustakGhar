@@ -5,20 +5,17 @@ import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 export const Bookstore = () => {
 
-    const { productState: { productList, searchResults, searchInput } } = useProduct();
+    const { productState: { productList, searchResults, searchInput, showSearched } } = useProduct();
     const { filterState } = useFilter();
-    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(productList, filterState);
+    const inputProductList = showSearched ? searchResults : productList;
+    const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(inputProductList, filterState);
 
     return(
         <div className="bookstore-wrapper grid grid-13layout">
             <FiltersPanel />
             <ProductListing 
                 title={"All Books"}
-                productList={
-                    searchInput.length > 0 ?
-                    searchResults : 
-                    filteredAndSortedProducts
-                }
+                productList={filteredAndSortedProducts}
                 searchInput={searchInput}
                 searchResults={searchResults}
             />

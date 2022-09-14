@@ -1,11 +1,12 @@
 const initialProductListValues = {
     productList: [],
+    showSearched: false,
     searchInput: "",
     searchResults: []
 }
 
 const productReducerFunction = (state, { type, payload }) => {
-    const { productList, searchInput } = state;
+    const { productList, showSearched, searchInput } = state;
 
     switch (type) {
         case "FETCH_PRODUCTS": 
@@ -14,6 +15,12 @@ const productReducerFunction = (state, { type, payload }) => {
                 productList: [ ...payload ]
             });
 
+        case "INIT_SEARCH":
+            return ({
+                ...state,
+                showSearched: payload
+            })
+
         case "SET_SEARCH_INPUT": 
             return ({
                 ...state,
@@ -21,7 +28,6 @@ const productReducerFunction = (state, { type, payload }) => {
             });
 
         case "GET_SEARCH_RESULTS": 
-            // const lowerCasedPayload = payload.toLowerCase()
             return ({
                 ...state,
                 searchResults: [ ...productList ].filter (

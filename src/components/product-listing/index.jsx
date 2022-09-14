@@ -1,9 +1,11 @@
 import "./product-listing.css";
 import { ProductCardVr } from "../../components";
+import { useProduct } from "../../contexts";
 
 
-export const ProductListing = ({ title, productList, searchInput, searchResults }) => {
-    
+export const ProductListing = ({ title, productList, searchInput }) => {
+    const { productState: { showSearched }, productDispatch } = useProduct();
+
     return(
         <div className="prod-list-wrapper">
             <div className="main-header flex-row flex_justify-center">
@@ -12,9 +14,18 @@ export const ProductListing = ({ title, productList, searchInput, searchResults 
             <div className="prod-list-details">
                 {
                     searchInput.length > 0 &&
-                    <p>Showing results for: <span>{searchInput}</span></p>
+                    showSearched &&
+                    <div className="flex-row flex_justify-sb">
+                        <p className="txt-bold">Showing search results for: <span className="txt-ittalic txt-primary">{searchInput}</span></p>
+                        <button 
+                            className="btn-see-all btn btn-link"
+                            onClick={() => productDispatch({ type: "INIT_SEARCH", payload: false })}
+                        >
+                            Show All Books
+                        </button>
+                    </div>
                 }
-                <p>{productList.length} results found</p>
+                <p className="txt-bold">Number of books found: <span className="txt-primary">{productList.length}</span></p>
             </div>
             <div className="prod-list-container flex-row flex_justify-center">
                 {
