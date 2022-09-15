@@ -1,0 +1,140 @@
+.nav-wrapper {
+    position: sticky;
+    top: 0;
+    background-color: var(--black);
+    padding-top: 0.75rem;
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.5);    
+    z-index: 10;
+}
+
+
+/* primary nav */
+.nav-pri-container {
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--grey3);    
+}
+
+.nav-pri-sec1 {
+    gap: 3rem;
+}
+
+.nav-pri-list {
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-pri-item {
+    color: white;
+    text-decoration: none;
+    padding-top: 0.5rem;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.nav-pri-item:hover {
+    color: var(--orange);
+}
+
+.nav-pri-item-selected {
+    border-bottom: 3px solid var(--primary);
+}
+
+.profile-dd-btn {
+    position: relative;
+}
+
+.nav-pri-sec2 {
+    margin-left: auto;
+}
+
+.nav-pri-icon {
+    color: var(--primary);
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.nav-pri-txt {
+    font-size: 0.75rem;
+}
+
+
+/* search-box */
+.search-box-wrapper {
+    width: 100%;
+    padding-right: 3rem;
+}
+
+.search-box-container {
+    background-color: var(--white);
+    width: 70%;
+    border-radius: var(--br-sq);
+    margin-left: auto;
+}
+
+.nav-search-icon {
+    color: var(--black);
+    padding: 0 1rem;
+    margin-left: auto;
+}
+
+.search-box {
+    background-color: transparent;
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: var(--br-sq);
+    outline: none;
+    caret-color: var(--orange);
+}
+
+.search-box::placeholder {
+    color: var(--grey2);
+}
+
+
+/* secondary-nav */
+.nav-sec-item {
+    background-color: transparent;
+    color: var(--white);
+    font-size: 0.75rem;
+    text-decoration: none;
+    padding: 0.5rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.nav-sec-item:hover,
+.nav-sec-item:focus,
+.nav-sec-item-selected {
+    background-color: var(--primary);
+    color: var(--black);
+}
+
+.nav-sec-item.item-no-hov:hover {
+    background-color: transparent;
+    color: var(--white);
+    cursor: default;
+}
+
+.nav-sec-icon {
+    font-size: 0.85rem;
+}
+
+.acc-cart-link {
+    position: relative;
+}
+
+.badge.cart-badge {
+    top: -2px;
+    left: 0.5rem;
+    background-color: var(--red);
+    color: var(--black);
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+

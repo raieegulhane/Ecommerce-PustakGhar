@@ -1,0 +1,53 @@
+.filters-wrapper {
+    background-color: var(--bg-sec);
+    border-radius: var(--br-sq);
+    gap: 1rem;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.filters-container {
+    width: 80%;
+    padding: 2.5rem 0.75rem 2rem;
+    margin: 0 auto;
+}
+
+.filters-header {
+    padding-bottom: 1.25rem;
+}
+
+.filters-heading {
+    text-decoration-color: var(--primary);
+}
+
+.btn-link.btn-clear {
+    font-size: 15px;
+}
+
+.btn-link.btn-clear:hover {
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.filters {
+    gap: 1.25rem;
+}
+
+.sort-container {
+    border-top: 1px solid var(--grey1)
+}
+
+.filter-item {
+    gap: 5px;
+}
+
+.filter-item-star {
+    color: var(--orange);
+}
+
+.price-slider {
+    width: 100%;
+}
+
+.price-datalist {
+    padding-top: 0;
+}

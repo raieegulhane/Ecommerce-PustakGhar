@@ -1,0 +1,29 @@
+/* stylesheets */
+@import url("https://matrixui.netlify.app/assets/stylesheet.css");
+@import url("./variables.css");
+@import url("./buttons.css");
+
+body {
+    background-color: var(--bg-pri);
+    color: var(--black);
+}
+
+.input::placeholder {
+    color: var(--gray1);
+}
+
+input:focus {
+    border-left: 3px solid var(--primary);
+}
+
+.txt-primary {
+    color: var(--primary);
+}
+
+.txt-green {
+    color: var(--green);
+}
+
+.txt-red {
+    color: var(--red);
+}

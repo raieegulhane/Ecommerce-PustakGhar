@@ -1,0 +1,27 @@
+.cart-price-wrapper {
+    background-color: var(--bg-sec);
+    height: fit-content;
+    padding: 2rem;
+    border-radius: var(--br-sq);
+    gap: 1.25rem;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cp-heading {
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid var(--gray1);
+}
+
+.cp-list {
+    padding: 0.5rem 1rem 0;
+    gap: 1rem;
+}
+
+.cp-total {
+    padding: 1rem 1rem 0;
+    border-top: 1px solid var(--gray1);
+}
+
+.cp-btn {
+    margin-top: 0.75rem;
+}

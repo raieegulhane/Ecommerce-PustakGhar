@@ -1,0 +1,30 @@
+.hr-cl-wrapper {
+    background-color: var(--bg-sec);
+    padding: 2rem;
+    border-radius: var(--br-sq);
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.prod-list-header.hr-cl-header {
+    margin-bottom: 2rem;
+}
+
+.empty-list-container {
+    height: 30vh;
+    gap: 1rem;
+}
+
+.empty-list-txt {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.empty-list-btn-container {
+    width: 45%;
+    gap: 1rem;
+}
+
+.empty-list-btn {
+    width: 100%;
+}
+

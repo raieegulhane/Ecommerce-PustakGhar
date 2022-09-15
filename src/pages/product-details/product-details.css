@@ -1,0 +1,82 @@
+.prod-details-wrapper {
+    position: relative;
+    background-color: var(--bg-sec);
+    border-radius: var(--br-sq);
+    width: 75%;
+    padding: 2.5rem 2rem 2rem;
+    margin: 1.25rem auto;
+    box-shadow: 3px 3px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.prod-details-container {
+    gap: 3rem;
+}
+
+.prod-img-container {
+    width: 30%;
+}
+
+.prod-des-container {
+    gap: 1rem;
+}
+
+.prod-header {
+    padding: 0 0.5rem 1.5rem;
+    border-bottom: 1px solid var(--primary);
+}
+
+.prod-author {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.star-container {
+    font-size: 1rem;
+    padding-top: 0.25rem;
+    gap: 0.25rem;
+}
+
+.star-icon {
+    color: var(--primary);
+}
+
+.prod-des {
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.genre-name {
+    text-transform: capitalize;
+}
+
+.bestseller-tag,
+.out-of-stock-tag {
+    color: var(--white);
+    width: fit-content;
+    padding: 0 0.5rem;
+    border-radius: var(--br-sq);
+}
+
+.bestseller-tag {
+    background-color: var(--green);
+}
+
+.out-of-stock-tag {
+    background-color: var(--red);
+    margin-bottom: 0.5rem;
+}
+
+.prod-det-btn-container {
+    margin-top: auto;
+    gap: 1rem;
+}
+
+.prod-det-btn {
+    width: 50%;
+}
+
+.back-link {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+}

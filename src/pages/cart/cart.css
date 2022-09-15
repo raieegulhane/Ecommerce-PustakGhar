@@ -1,0 +1,12 @@
+.cart-wrapper {
+    padding: 1.5rem;
+}
+
+.cart-container {
+    gap: 1.5rem;
+}
+
+.empty-cart-container {
+    width: 75%;
+    margin: auto;
+}
