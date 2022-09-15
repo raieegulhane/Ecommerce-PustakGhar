@@ -1,10 +1,18 @@
 import "./checkout.css";
-import { Link } from "react-router-dom";
-import { useUserDetails } from "../../contexts";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth, useCart, useUserDetails } from "../../contexts";
 import { CartPriceDetails, CheckoutHrCardListing } from "../../components";
+import { getCartPricingDetails, scriptLoader } from "../../utility-functions";
+import { clearCartService } from "../../services";
+import Logo from "../../assets/logos/pg-favicon-main.svg";
 
 export const Checkout = () => {
-    const { userDetailsState: { currentAddress }} = useUserDetails();
+    const navigate = useNavigate();
+    const { authState: { authToken, userData } } = useAuth();
+    const { firstName, lastName, email } = userData;
+    const { cartState: { cart }, cartDispatch } = useCart();
+    const { userDetailsState: { currentAddress } } = useUserDetails();
     const { 
         fullName,
         mobileNo,
@@ -15,6 +23,56 @@ export const Checkout = () => {
         state,
         country
     } = currentAddress;
+    const { cartTotal } = getCartPricingDetails(cart);
+
+    const paymentHandler = async () => {
+        const response = await scriptLoader("https://checkout.razorpay.com/v1/checkout.js");
+        if (!response) {
+            toast.error("Error occured while loading payment gateway. Please try again.");
+            return;
+        }
+
+        const options = {
+            key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+            amount: cartTotal * 100,
+            currency: "INR",
+            name: "PustakGhar",
+            description: "Thankyou for shopping with us!",
+            image: Logo,
+
+            handler: async (response) => {
+                const paymentId = response.razorpay_payment_id;
+                try {
+                    const {data: { cart }} = await clearCartService(authToken);
+                    cartDispatch({ type: "SET_CART", payload: cart });
+                } catch (error) {
+                    console.log("ERROR__CLEAR_CART: ", error);
+                }
+                toast.success("Payment successful");
+                navigate("/");
+            },
+
+            modal: {
+                onDismiss: () => {
+                    toast.info("Transaction was not completed.")
+                }
+            },
+
+            prefill: {
+                name: `${firstName} ${lastName}`,
+                email: email,
+                contact: "987654321"
+            },
+
+            theme: { color: "#000000"}
+        }
+        
+        const paymentModal = new window.Razorpay(options);
+		paymentModal.open();
+        paymentModal.on(() => {
+            toast.error("Payment failed.")
+        });
+    }
 
     return(
         <div className="main-wrapper">
@@ -45,30 +103,10 @@ export const Checkout = () => {
                     <CartPriceDetails 
                         inCart={false}
                         inCheckout={true}
+                        paymentHandler={paymentHandler}
                     />
                 </div>
             </div>
         </div>
-        // <div className="main-wrapper">
-        //     <div className="cart-container grid grid-21layout">
-        //         <div className="co-container main-container">
-                    
-        //         </div>
-        //         <div className="co-det-wrapper">
-        //             <div className="co-det-container flex-col">
-                      
-
-        //                 <CartPriceDetails 
-        //                     inCart={false}
-        //                     inCheckout={true}
-        //                 />
-        //             </div>
-                    
-                    
-
-                    
-        //         </div>
-        //     </div>
-        // </div>
     );
 }

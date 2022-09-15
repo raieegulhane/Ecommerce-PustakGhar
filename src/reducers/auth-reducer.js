@@ -4,7 +4,6 @@ const initialAuthData = {
     userData: {},
 }
 
-
 const authReducerFunction = (state, { type, payload }) => {
     switch(type) {
         case "AUTH_INIT":

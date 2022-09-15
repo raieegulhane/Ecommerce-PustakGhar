@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts";
 import { getCartPricingDetails } from "../../utility-functions";
 
-export const CartPriceDetails = ({ inCart, inCheckout }) => {
+export const CartPriceDetails = ({ inCart, inCheckout, paymentHandler }) => {
     const { cartState: { cart } } = useCart();
     const { cartQty, cartPrice, cartDiscount, cartTotal } = getCartPricingDetails(cart);
 
@@ -31,17 +31,26 @@ export const CartPriceDetails = ({ inCart, inCheckout }) => {
                 <p className="txt-bold">₹ <span className="total_price">{cartTotal}</span></p>
             </div>
 
-            <Link 
-                to={`${ inCart ? "/address" : "/"}`}
-                className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
-            >
-                {
-                    inCart ?
-                    "Proceed to Buy" :
-                    "Place Your Order and Pay"
-                }
-                <i className="fa-solid fa-angles-right"></i>
-            </Link>
+            {
+                inCart &&
+                <Link 
+                    to={"/address"}
+                    className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
+                >
+                    Proceed to Buy
+                    <i className="fa-solid fa-angles-right"></i>
+                </Link>
+            }
+            {
+                inCheckout &&
+                <button
+                    className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
+                    onClick={paymentHandler}
+                >
+                    Place Your Order and Pay
+                    <i className="fa-solid fa-angles-right"></i>
+                </button>
+            }
         </div>
     );
 }

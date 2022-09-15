@@ -4,8 +4,6 @@ const initialCartValues = {
 }
 
 const cartReducerFunction = (state, { type, payload }) => {
-    const { cartDetails } = state;
-
     switch(type) {
         case "SET_CART":
             return ({

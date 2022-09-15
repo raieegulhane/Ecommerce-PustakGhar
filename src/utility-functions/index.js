@@ -11,3 +11,5 @@ export { getFilteredAndSortedProductsFunction } from "./get-product-list/get-fil
 export { removeDuplicateFunction } from "./get-product-list/remove-duplicate";
 
 export { getCartPricingDetails } from "./cart/cart-pricing-details";
+
+export { scriptLoader } from "./script-loader";
