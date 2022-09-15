@@ -49,7 +49,7 @@ export const Checkout = () => {
                     console.log("ERROR__CLEAR_CART: ", error);
                 }
                 toast.success("Payment successful");
-                navigate("/");
+                navigate("/order-confirmation");
             },
 
             modal: {

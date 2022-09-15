@@ -10,3 +10,4 @@ export { CartCardHr,  WishlistCardHr, CheckoutCardHr } from "./product-card-hr";
 export { CartPriceDetails } from "./cart-price-details";
 export { CartHrCardListing, WishlistHrCardListing, CheckoutHrCardListing } from "./hr-card-listing";
 export { PasswordInput } from "./password-input";
+export { SearchRecomm } from "./search-recomm";

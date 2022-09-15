@@ -4,11 +4,11 @@ import { NavLink, Link } from "react-router-dom";
 import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
 import { useAuth, useProduct, useCart } from "../../contexts";
 import { ProfileDropdown } from "./profile-dropdown";
+import { SearchRecomm } from ".."
 
 export const Navbar = () => {
-
     const { authState: { isAuth } } = useAuth();
-    const { productDispatch } = useProduct();
+    const { productState, productDispatch } = useProduct();
     const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
@@ -29,12 +29,15 @@ export const Navbar = () => {
     const searchBoxHandler = (event) => {
         event.preventDefault();
         setSearchBoxValue(event.target.value);
+        productDispatch({ type: "INIT_SELECT_RECCOMENDATION", payload: false })
+        productDispatch({ type: "SET_SEARCH_INPUT", payload: event.target.value })
+        productDispatch({ type: "GET_SEARCH_RECOMMENDATIONS" });
     }
 
     const searchClickHandler = () => {
-        productDispatch({ type: "INIT_SEARCH", payload: true})
+        productDispatch({ type: "INIT_SEARCH", payload: true })
         productDispatch({ type: "SET_SEARCH_INPUT", payload: searchBoxValue })
-        productDispatch({ type: "GET_SEARCH_RESULTS"});
+        productDispatch({ type: "GET_SEARCH_RESULTS" });
         setSearchBoxValue("");
     }
 
@@ -91,6 +94,12 @@ export const Navbar = () => {
                             className="fa-solid fa-magnifying-glass nav-search-icon"
                             onClick={searchClickHandler}    
                         ></i>
+                        {
+                            searchBoxValue &&
+                            <SearchRecomm 
+                                setSearchBoxValue={setSearchBoxValue}
+                            />
+                        }
                     </div>
                 </div>
 

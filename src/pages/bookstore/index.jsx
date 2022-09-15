@@ -5,9 +5,15 @@ import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 export const Bookstore = () => {
 
-    const { productState: { productList, searchResults, searchInput, showSearched } } = useProduct();
+    const { productState: { 
+        productList, 
+        searchResults, 
+        searchInput, 
+        showSearched, 
+        showClicked 
+    } } = useProduct();
     const { filterState } = useFilter();
-    const inputProductList = showSearched ? searchResults : productList;
+    const inputProductList = (showSearched || showClicked) ? searchResults : productList;
     const filteredAndSortedProducts = getFilteredAndSortedProductsFunction(inputProductList, filterState);
 
     return(

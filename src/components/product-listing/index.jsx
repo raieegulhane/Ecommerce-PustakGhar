@@ -16,7 +16,10 @@ export const ProductListing = ({ title, productList, searchInput }) => {
                     searchInput.length > 0 &&
                     showSearched &&
                     <div className="flex-row flex_justify-sb">
-                        <p className="txt-bold">Showing search results for: <span className="txt-ittalic txt-primary">{searchInput}</span></p>
+                        {
+                            showSearched &&
+                            <p className="txt-bold">Showing search results for: <span className="txt-ittalic txt-primary">{searchInput}</span></p>
+                        }
                         <button 
                             className="btn-see-all btn btn-link"
                             onClick={() => productDispatch({ type: "INIT_SEARCH", payload: false })}
