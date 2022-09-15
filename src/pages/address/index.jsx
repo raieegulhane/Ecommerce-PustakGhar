@@ -56,7 +56,7 @@ export const Address = () => {
         navigate("/checkout");
     }
 
-    const continueWtDummyAddFunction = (event) => {
+    const continueWtDummyAddFunction = () => {
         userDetailsDispatch({ 
             type: "SET_CURRENT_ADDRESS", 
             payload: {
@@ -229,7 +229,7 @@ export const Address = () => {
                         >
                             <i className="fa-solid fa-angles-left"></i>
                             Back
-            </button>
+                        </button>
                     </div>
                 </form>
             </div>

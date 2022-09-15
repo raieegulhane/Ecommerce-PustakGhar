@@ -15,7 +15,6 @@ export const filterByFormatFunction = (productList, format) => {
         const filteredData = [ ...productList ].filter(
             (item) => item.format === "Paperback"
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -23,7 +22,6 @@ export const filterByFormatFunction = (productList, format) => {
         const filteredData = [ ...productList ].filter(
             (item) => item.format === "Hardcover"
         );
-
         filteredProductList.push(...filteredData);
     }
 

@@ -3,7 +3,6 @@ import { useCart } from "../../contexts";
 import { CartPriceDetails, CartHrCardListing } from "../../components";
 
 export const Cart = () => {
-
     const { cartState: { cart }} = useCart();
     
     return(

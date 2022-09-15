@@ -3,11 +3,9 @@ import { toast } from "react-toastify";
 import { initialProductListValues, productReducerFunction } from "../reducers";
 import { getProductsService } from "../services";
 
-
 const ProductContext = createContext({ ...initialProductListValues });
 
 const ProductProvider = ({ children }) => {
-    
     const [ productState, productDispatch ] = useReducer(productReducerFunction, initialProductListValues);
 
     useEffect (() => {

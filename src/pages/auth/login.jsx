@@ -6,9 +6,7 @@ import { loginService } from "../../services";
 import { useAuth } from "../../contexts";
 import { PasswordInput } from "../../components";
 
-
 export const Login = () => {
-
     const navigate = useNavigate();
     const location = useLocation();
 

@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts";
 
-
 export const Account = () => {
-
     const navigate = useNavigate();
 
     const { authState: { userData }, authDispatch } = useAuth();

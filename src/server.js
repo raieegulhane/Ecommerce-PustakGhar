@@ -23,7 +23,6 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
-import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 
@@ -52,8 +51,6 @@ export function makeServer({ environment = "development" } = {}) {
       users.forEach((item) =>
         server.create("user", { ...item, cart: [], wishlist: [] })
       );
-
-      categories.forEach((item) => server.create("category", { ...item }));
     },
 
     routes() {

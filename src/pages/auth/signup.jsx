@@ -194,7 +194,7 @@ export const Signup = () => {
                         Login
                     </Link> 
                     <span>to your account</span>
-                    </p>
+                </p>
             </div>
         </div>
     );

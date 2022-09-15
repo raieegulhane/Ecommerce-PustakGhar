@@ -33,14 +33,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "adventure") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "adventure" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -48,14 +43,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "autobiography") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "autobiography" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -63,14 +53,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "children") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "children" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -78,14 +63,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "drama") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "drama" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -93,14 +73,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "fantasy") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "fantasy" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -108,14 +83,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "fiction") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "fiction" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -123,14 +93,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "philosophy") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "philosophy" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -138,14 +103,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "romance") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "romance" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -153,14 +113,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "self-help") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "self-help" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 
@@ -168,14 +123,9 @@ export const filterByGenreFunction = (productList, genreList) => {
         const filteredData = [];
         [ ...productList ].map(
             (item) => [...item.genre].filter(
-                (genreName) => {
-                    if (genreName === "science") {
-                        filteredData.push(item);
-                    }
-                }
+                (genreName) => genreName === "science" && filteredData.push(item)
             )
         );
-
         filteredProductList.push(...filteredData);
     }
 

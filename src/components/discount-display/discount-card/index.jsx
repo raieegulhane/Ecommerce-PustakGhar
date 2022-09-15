@@ -1,7 +1,6 @@
 import "./discount-card.css";
 import { Link } from "react-router-dom";
 
-
 export const DiscountCard = ({ src, description }) => {
     return(
         <div className="disc-card-wrapper flex-col flex_align-middle">

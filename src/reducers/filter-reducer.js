@@ -92,14 +92,12 @@ const filterReducerFunction = (state, { type, payload }) => {
                 filterByGenre: { ...filterByGenre, science: !filterByGenre.science }
             });
 
-
         // price
         case "FILTER_BY_PRICE":
             return {
 				...state,
 				filterByPrice: payload
 			};
-
 
         // discount
         case "FILTER_BY_DISCOUNT":
@@ -108,14 +106,12 @@ const filterReducerFunction = (state, { type, payload }) => {
                 filterByDiscount: payload
             });
 
-
         // rating
         case "FILTER_BY_RATING":
             return({
                 ...state,
                 filterByRating: payload
             });
-
 
         // format    
         case "FORMAT_PAPERBACK": 
@@ -130,7 +126,6 @@ const filterReducerFunction = (state, { type, payload }) => {
                 filterByFormat: { ...filterByFormat, hardcover: !filterByFormat.hardcover }
             });
 
-
         // other    
         case "FILTER_BESTSELLER": 
             return({
@@ -144,7 +139,6 @@ const filterReducerFunction = (state, { type, payload }) => {
                 otherFilters: { ...otherFilters, inStock: !otherFilters.inStock }
             });
           
-            
         // sort
         case "POPULARITY": 
             return({
@@ -164,12 +158,10 @@ const filterReducerFunction = (state, { type, payload }) => {
                 sortBy: "PRICE_LOW_TO_HIGH"
             });
 
-        
         // clear all
         case "CLEAR_ALL": 
             return({ ...initialFilterValues });
             
-
         default: 
             return { initialFilterValues }
     }

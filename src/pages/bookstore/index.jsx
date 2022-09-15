@@ -4,7 +4,6 @@ import { FiltersPanel, ProductListing } from "../../components";
 import { getFilteredAndSortedProductsFunction } from "../../utility-functions";
 
 export const Bookstore = () => {
-
     const { productState: { 
         productList, 
         searchResults, 

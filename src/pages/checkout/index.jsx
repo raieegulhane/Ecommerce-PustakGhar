@@ -41,7 +41,6 @@ export const Checkout = () => {
             image: Logo,
 
             handler: async (response) => {
-                const paymentId = response.razorpay_payment_id;
                 try {
                     const {data: { cart }} = await clearCartService(authToken);
                     cartDispatch({ type: "SET_CART", payload: cart });

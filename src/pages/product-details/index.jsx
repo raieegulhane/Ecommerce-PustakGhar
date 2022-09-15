@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { addToCartService, addToWishlistService, getProductByIdService } from "../../services";
-import { useAuth, useCart, useProduct } from "../../contexts";
+import { useAuth, useCart } from "../../contexts";
 
 export const ProductDetails = () => {
     const navigate = useNavigate();
