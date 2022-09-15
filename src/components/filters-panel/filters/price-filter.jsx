@@ -3,7 +3,6 @@ import { useFilter } from "../../../contexts";
 export const PriceFilter = () => {
 
     const { filterState: { filterByPrice }, filterDispatch } = useFilter();
-    console.log("st: ",filterByPrice)
 
     return(
         <div>

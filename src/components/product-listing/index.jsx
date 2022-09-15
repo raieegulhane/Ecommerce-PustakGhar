@@ -1,48 +1,42 @@
 import "./product-listing.css";
 import { ProductCardVr } from "../../components";
+import { useProduct } from "../../contexts";
 
 
-export const ProductListing = ({ title, productList }) => {
-    
+export const ProductListing = ({ title, productList, searchInput }) => {
+    const { productState: { showSearched }, productDispatch } = useProduct();
+
     return(
         <div className="prod-list-wrapper">
-            <div className="prod-list-header flex-row flex_justify-center">
-                <h1 className="product_heading txt-underline">{title}</h1>
+            <div className="main-header flex-row flex_justify-center">
+                <h1 className="main-heading txt-underline">{title}</h1>
             </div>
-
+            <div className="prod-list-details">
+                {
+                    searchInput.length > 0 &&
+                    showSearched &&
+                    <div className="flex-row flex_justify-sb">
+                        {
+                            showSearched &&
+                            <p className="txt-bold">Showing search results for: <span className="txt-ittalic txt-primary">{searchInput}</span></p>
+                        }
+                        <button 
+                            className="btn-see-all btn btn-link"
+                            onClick={() => productDispatch({ type: "INIT_SEARCH", payload: false })}
+                        >
+                            Show All Books
+                        </button>
+                    </div>
+                }
+                <p className="txt-bold">Number of books found: <span className="txt-primary">{productList.length}</span></p>
+            </div>
             <div className="prod-list-container flex-row flex_justify-center">
                 {
                     productList.map((product) => {
-                        const { 
-                            _id, 
-                            title, 
-                            author, 
-                            originalPrice, 
-                            discountedPrice, 
-                            discount, 
-                            stars, 
-                            totalRatings, 
-                            format,
-                            inStock, 
-                            bestSeller, 
-                            coverImage 
-                        } = product
                         return(
                             <ProductCardVr 
                                 product={product}
-                                key={_id}
-                                _id={_id}
-                                title={title}
-                                author={author}
-                                originalPrice={originalPrice}
-                                discountedPrice={discountedPrice}
-                                discount={discount}
-                                stars={stars}
-                                totalRatings={totalRatings}
-                                format={format}
-                                inStock={inStock}
-                                bestSeller={bestSeller}
-                                coverImage={coverImage}
+                                key={product._id}
                             />
                         );
                     }) 

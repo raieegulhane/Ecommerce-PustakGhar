@@ -23,7 +23,7 @@ export const FormatFilter = () => {
                                         type="checkbox" 
                                         name="format"
                                         value={value}
-                                        checked={filterByFormat.value}
+                                        checked={filterByFormat[value]}
                                         onChange={() => filterDispatch({ type: actionType })}    
                                     />
                                     {formatOption}

@@ -23,7 +23,7 @@ export const GenreFilter = () => {
                                         type="checkbox"
                                         name="genre"
                                         value={value}
-                                        checked={filterByGenre.value}
+                                        checked={filterByGenre[value]}
                                         onChange={() => filterDispatch({ type: actionType })} 
                                     />
                                     {genreOption}

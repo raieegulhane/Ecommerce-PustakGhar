@@ -8,6 +8,7 @@ import {
   getCartItemsHandler,
   removeItemFromCartHandler,
   updateCartItemHandler,
+  clearCartHandler
 } from "./backend/controllers/CartController";
 import {
   getAllCategoriesHandler,
@@ -22,7 +23,6 @@ import {
   getWishlistItemsHandler,
   removeItemFromWishlistHandler,
 } from "./backend/controllers/WishlistController";
-import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
 import { users } from "./backend/db/users";
 
@@ -51,8 +51,6 @@ export function makeServer({ environment = "development" } = {}) {
       users.forEach((item) =>
         server.create("user", { ...item, cart: [], wishlist: [] })
       );
-
-      categories.forEach((item) => server.create("category", { ...item }));
     },
 
     routes() {
@@ -73,10 +71,8 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/user/cart", getCartItemsHandler.bind(this));
       this.post("/user/cart", addItemToCartHandler.bind(this));
       this.post("/user/cart/:productId", updateCartItemHandler.bind(this));
-      this.delete(
-        "/user/cart/:productId",
-        removeItemFromCartHandler.bind(this)
-      );
+      this.delete("/user/cart/:productId",removeItemFromCartHandler.bind(this));
+      this.post("/user/cart/clear", clearCartHandler.bind(this));
 
       // wishlist routes (private)
       this.get("/user/wishlist", getWishlistItemsHandler.bind(this));

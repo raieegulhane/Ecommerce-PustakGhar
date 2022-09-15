@@ -1,25 +1,19 @@
 import "./cart-price-details.css";
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts";
+import { getCartPricingDetails } from "../../utility-functions";
 
+export const CartPriceDetails = ({ inCart, inCheckout, paymentHandler }) => {
+    const { cartState: { cart } } = useCart();
+    const { cartQty, cartPrice, cartDiscount, cartTotal } = getCartPricingDetails(cart);
 
-export const CartPriceDetails = () => {
-
-    const { 
-        cartState: { 
-            cartQuantity, 
-            cartPrice, 
-            cartDiscount, 
-            cartTotal
-        }
-    } = useCart();
-    
     return(
         <div className="cart-price-wrapper flex-col">
             <h2 className="cp-heading">Price Details</h2>
 
             <ul className="cp-list list-noBullets flex-col">
                 <li className="flex-row flex_justify-sb">
-                    <p>Price (<span>{cartQuantity}</span> Items)</p>
+                    <p>Price (<span>{cartQty}</span> Items)</p>
                     <p>₹ <span>{cartPrice}</span></p>
                 </li>
                 <li className="flex-row flex_justify-sb">
@@ -37,9 +31,26 @@ export const CartPriceDetails = () => {
                 <p className="txt-bold">₹ <span className="total_price">{cartTotal}</span></p>
             </div>
 
-            <button className="cp-btn btn btn-primary btn-block btn-sq">
-                Proceed to Payment
-            </button>
+            {
+                inCart &&
+                <Link 
+                    to={"/address"}
+                    className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
+                >
+                    Proceed to Buy
+                    <i className="fa-solid fa-angles-right"></i>
+                </Link>
+            }
+            {
+                inCheckout &&
+                <button
+                    className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
+                    onClick={paymentHandler}
+                >
+                    Place Your Order and Pay
+                    <i className="fa-solid fa-angles-right"></i>
+                </button>
+            }
         </div>
     );
 }

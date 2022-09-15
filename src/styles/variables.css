@@ -10,14 +10,15 @@
     /*** color ***/
     --primary: #ec5d0f;
     --accent: #FFD6C0;
-    --bg-pri: #efefef;
-    --bg-sec: #f3f3f3;
+    --bg-pri: #f5f5f5;
+    --bg-sec: #fafafa;
     --black: #090909;
     --white: #ffffff;
     --grey1: #ccc;
     --grey2: #aaa;
     --grey3: #333;
     --grey4: #222;
+    --grey5: #555;
     --orange: #ff8323;
     --green: #019b01;
     --red: #ff2424;

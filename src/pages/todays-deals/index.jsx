@@ -1,14 +1,13 @@
-import { products } from "../../backend/db/products";
+import { useProduct } from "../../contexts";
 import { ProductListing } from "../../components";
 
-
 export const TodaysDeals = () => {
-
-    const todaysDealsList = products.filter((item) => item.discount >= 40)
+    const { productState: { productList }} = useProduct();
+    const todaysDealsList = [ ...productList ].filter((item) => item.discount >= 40)
 
     return(
-        <div className="bestseller-wrapper">
-            <div className="bestseller-container">
+        <div className="main-wrapper">
+            <div className="container-75">
                 <ProductListing 
                     title={"Today's Deals - 40% and Up Discounts!!"}
                     productList={todaysDealsList}

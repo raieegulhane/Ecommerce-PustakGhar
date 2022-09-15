@@ -1,17 +1,7 @@
 import { Response } from "miragejs";
 import { formatDate, requiresAuth } from "../utils/authUtils";
 
-/**
- * All the routes related to Wishlist are present here.
- * These are private routes.
- * Client needs to add "authorization" header with JWT token in it to access it.
- * */
-
-/**
- * This handler handles getting items to user's wishlist.
- * send GET Request at /api/user/wishlist
- * */
-
+// GET Request at /api/user/wishlist
 export const getWishlistItemsHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   if (!userId) {
@@ -27,12 +17,9 @@ export const getWishlistItemsHandler = function (schema, request) {
   return new Response(200, {}, { wishlist: userWishlist });
 };
 
-/**
- * This handler handles adding items to user's wishlist.
- * send POST Request at /api/user/wishlist
- * body contains {product}
- * */
 
+// POST Request at /api/user/wishlist
+// body contains {product}
 export const addItemToWishlistHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   try {
@@ -46,12 +33,14 @@ export const addItemToWishlistHandler = function (schema, request) {
       );
     }
     const userWishlist = schema.users.findBy({ _id: userId }).wishlist;
-    const { product } = JSON.parse(request.requestBody);
-    userWishlist.push({
-      ...product,
-      createdAt: formatDate(),
-      updatedAt: formatDate(),
-    });
+    const product = JSON.parse(request.requestBody);
+    if (userWishlist.findIndex((item) => item._id === product._id) < 0) {
+      userWishlist.push({
+        ...product,
+        createdAt: formatDate(),
+        updatedAt: formatDate(),
+      });
+    }
     this.db.users.update({ _id: userId }, { wishlist: userWishlist });
     return new Response(201, {}, { wishlist: userWishlist });
   } catch (error) {
@@ -65,12 +54,9 @@ export const addItemToWishlistHandler = function (schema, request) {
   }
 };
 
-/**
- * This handler handles removing items to user's wishlist.
- * send DELETE Request at /api/user/wishlist
- * body contains {product}
- * */
 
+// DELETE Request at /api/user/wishlist
+// body contains {product}
 export const removeItemFromWishlistHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   try {

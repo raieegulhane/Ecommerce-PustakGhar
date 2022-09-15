@@ -1,6 +1,8 @@
 /* stylesheets */
 @import url("https://matrixui.netlify.app/assets/stylesheet.css");
+@import url("react-toastify/dist/ReactToastify.css");
 @import url("./variables.css");
+@import url("./main.css");
 @import url("./buttons.css");
 
 body {
@@ -9,11 +11,7 @@ body {
 }
 
 .input::placeholder {
-    color: var(--gray1);
-}
-
-input:focus {
-    border-left: 3px solid var(--primary);
+    color: var(--grey1);
 }
 
 .txt-primary {

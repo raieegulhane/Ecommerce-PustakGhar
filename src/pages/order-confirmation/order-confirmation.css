@@ -1,0 +1,16 @@
+.oc-container {
+    max-width: 500px;
+}
+
+.oc-content {
+    padding: 1.5rem 2rem 0;
+    gap: 1rem;
+}
+
+.confirm-txt {
+    font-size: 1.25rem;
+}
+
+.oc-txt {
+    margin-bottom: 1rem;
+}

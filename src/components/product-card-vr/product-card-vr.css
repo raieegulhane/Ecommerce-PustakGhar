@@ -38,6 +38,10 @@
     color: var(--red);
 }
 
+.wl-selected:hover {
+    opacity: 0.75;
+}
+
 .img-container {
     position: relative;
     width: 100%;

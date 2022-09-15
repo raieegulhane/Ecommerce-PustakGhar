@@ -4,7 +4,6 @@ import BooksImg2 from "../../assets/images/book2.jpg";
 import BooksImg3 from "../../assets/images/book3.jpg";
 import BooksImg4 from "../../assets/images/book4.jpg";
 
-
 export const discountList = [
     {
         _id: uuid(),

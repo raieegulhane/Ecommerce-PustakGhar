@@ -3,20 +3,26 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { makeServer } from "./server";
-import { FilterProvider, CartProvider } from "./contexts";
+import { AuthProvider, ProductProvider, FilterProvider, CartProvider, UserDetailsProvider } from "./contexts";
 
-// Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <FilterProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </FilterProvider>
+      <AuthProvider>
+        <ProductProvider>
+          <FilterProvider>
+            <CartProvider>
+              <UserDetailsProvider>
+                <App />
+              </UserDetailsProvider>
+            </CartProvider>
+          </FilterProvider>
+        </ProductProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
+  
   document.getElementById("root")
 );
