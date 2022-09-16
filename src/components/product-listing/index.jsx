@@ -4,7 +4,7 @@ import { useProduct } from "../../contexts";
 
 
 export const ProductListing = ({ title, productList, searchInput }) => {
-    const { productState: { showSearched }, productDispatch } = useProduct();
+    const { productState: { showSearched, searchInput }, productDispatch } = useProduct();
 
     return(
         <div className="prod-list-wrapper">
