@@ -14,6 +14,7 @@ export const Bestsellers = () => {
                 <ProductListing 
                     title={"Best Sellers"}
                     productList={bestSellerProducts}
+                    searchInput={0}
                 />
             </div>
         </div>

@@ -135,7 +135,7 @@ export const CartCardHr = ({ product }) => {
                         <span>
                             {
                                 inWishlist ? 
-                                "Book in Wishlist" : 
+                                "Added to Wishlist" : 
                                 "Move to Wishlist"
                             }
                         </span>

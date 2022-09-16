@@ -24,14 +24,14 @@ export const ProductCardVr = ({ product }) => {
 
     const navigate = useNavigate();
 
-    const { authState: { isAuth, authToken, userData } } = useAuth();
+    const { authState: { isAuth, authToken } } = useAuth();
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
     const [ inCart, setInCart ] = useState(false);    
-    const [ inWishlist, setInwishlist ] = useState(false);
+    const [ inWishlist, setInWishlist ] = useState(false);
 
     useEffect (() => {
         cart.find((item) => item._id === _id) && setInCart(true);
-        wishlist.find((item) => item._id === _id) && setInwishlist(true);
+        wishlist.find((item) => item._id === _id) && setInWishlist(true);
     }, [_id]);
 
     const addToCartFunction = async () => {
@@ -64,7 +64,7 @@ export const ProductCardVr = ({ product }) => {
         try {
             const { data: { wishlist}} = await addToWishlistService(product, authToken);
             cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
-            setInwishlist(true)
+            setInWishlist(true)
             toast.success("Book added to wishlist")
         } catch (error) {
             console.log("ERROR__ADD_TO_WISHLIST: ", error);
@@ -76,7 +76,7 @@ export const ProductCardVr = ({ product }) => {
         try {
             const { data: { wishlist }} = await deleteFromWishlistService(_id, authToken);
             cartDispatch({ type: "SET_WISHLIST", payload: wishlist });
-            setInwishlist(false)
+            setInWishlist(false)
             toast.info("Book removed from wishlist")
         } catch (error) {
             console.log("ERROR__REMOVE_FROM_WISHLIST: ", error);

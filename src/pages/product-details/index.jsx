@@ -13,6 +13,7 @@ export const ProductDetails = () => {
     const { cartState: { cart, wishlist }, cartDispatch } = useCart();
     const [ currentProduct, setCurrentProduct ] = useState({});
     const {
+        _id,
         title,
         author,
         originalPrice,
@@ -29,7 +30,8 @@ export const ProductDetails = () => {
     } = currentProduct;
     const [ inCart, setInCart ] = useState(false);
     const [ inWishlist, setInWishlist ] = useState(false);
-
+    console.log("cart: ", inCart)
+    console.log("wl: ", inWishlist)
     const fetchProduct = async () => {
         try {
             const { data: { product }} = await getProductByIdService(productId);
@@ -45,13 +47,9 @@ export const ProductDetails = () => {
     }, [productId]);
 
     useEffect (() => {
-        if (cart.find((item) => item._id === productId)) {
-            setInCart(true);
-        }
-        if (wishlist.find((item) => item._id === productId)) {
-            setInWishlist(true);
-        }
-    }, [productId]);
+        cart.find((item) => item._id === _id) && setInCart(true);
+        wishlist.find((item) => item._id === _id) && setInWishlist(true);
+    }, [_id]);
 
     const addToCartFunction = async () => {
         if (inCart) {
@@ -203,7 +201,7 @@ export const ProductDetails = () => {
                             <i className="fa-solid fa-heart"></i>
                             {
                                 inWishlist ?
-                                <span>Book in Wishlist</span> :
+                                <span>Added to Wishlist</span> :
                                 <span>Add to Wishlist</span>
                             }
                         </button>

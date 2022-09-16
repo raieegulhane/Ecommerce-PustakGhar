@@ -11,6 +11,7 @@ export const TodaysDeals = () => {
                 <ProductListing 
                     title={"Today's Deals - 40% and Up Discounts!!"}
                     productList={todaysDealsList}
+                    searchInput={0}
                 />
             </div>
         </div>
