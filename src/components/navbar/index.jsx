@@ -8,7 +8,7 @@ import { SearchRecomm } from ".."
 
 export const Navbar = () => {
     const { authState: { isAuth } } = useAuth();
-    const { productState, productDispatch } = useProduct();
+    const { productDispatch } = useProduct();
     const { cartState: { cart, wishlist } } = useCart();
 
     const [showProfileDropdown, setShowProfileDropdown] = useState(false);
