@@ -30,8 +30,7 @@ export const ProductDetails = () => {
     } = currentProduct;
     const [ inCart, setInCart ] = useState(false);
     const [ inWishlist, setInWishlist ] = useState(false);
-    console.log("cart: ", inCart)
-    console.log("wl: ", inWishlist)
+   
     const fetchProduct = async () => {
         try {
             const { data: { product }} = await getProductByIdService(productId);

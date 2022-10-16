@@ -144,7 +144,7 @@ export const CartCardHr = ({ product }) => {
                         className="txt-sm cart-btn btn btn-outline btn-wt-icon btn-sq"
                         onClick={() => navigate(`/product/${id}`)}
                     >
-                        View Details
+                        View details
                     </button> 
                 </div> 
             </div>

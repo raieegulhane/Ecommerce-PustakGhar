@@ -61,7 +61,7 @@ export const Address = () => {
             type: "SET_CURRENT_ADDRESS", 
             payload: {
                 fullName: "Harry Potter",
-                mobileNo: "987654321",
+                mobileNo: "+919876543210",
                 flatNo: "No. 4",
                 area: "Private Drive",
                 town: "Surrey",
@@ -224,7 +224,7 @@ export const Address = () => {
                         </button>
 
                         <button 
-                            className="add-back-link btn-link btn-wt-icon"
+                            className="add-back-link btn-link btn-wt-icon flex-row flex_justify-start"
                             onClick={() => navigate(-1)}
                         >
                             <i className="fa-solid fa-angles-left"></i>

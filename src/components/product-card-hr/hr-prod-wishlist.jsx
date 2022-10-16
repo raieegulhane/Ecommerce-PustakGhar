@@ -122,16 +122,16 @@ export const WishlistCardHr = ({ product }) => {
                         {
                             inStock ? (
                                 inCart ? 
-                                <span>Go To Cart</span> :
+                                <span>Go to Cart</span> :
                                 <span>Add to Cart</span>
-                            ) : <span>Out of Stock</span>
+                            ) : <span>Out of stock</span>
                         }
                         </button> 
                         <button 
                             className="txt-sm wl-btn btn btn-outline btn-wt-icon btn-sq"
                             onClick={() => navigate(`/product/${id}`)}
                         >
-                            View Details
+                            View details
                         </button> 
                     </div>
                 </div>

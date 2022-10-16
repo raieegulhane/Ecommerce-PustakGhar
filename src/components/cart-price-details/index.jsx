@@ -37,7 +37,7 @@ export const CartPriceDetails = ({ inCart, inCheckout, paymentHandler }) => {
                     to={"/address"}
                     className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
                 >
-                    Proceed to Buy
+                    Proceed to buy
                     <i className="fa-solid fa-angles-right"></i>
                 </Link>
             }
@@ -47,7 +47,7 @@ export const CartPriceDetails = ({ inCart, inCheckout, paymentHandler }) => {
                     className="link-noDecoration txt-center btn-wt-icon cp-btn btn btn-primary btn-sq"
                     onClick={paymentHandler}
                 >
-                    Place Your Order and Pay
+                    Place your order and pay
                     <i className="fa-solid fa-angles-right"></i>
                 </button>
             }

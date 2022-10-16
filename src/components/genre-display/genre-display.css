@@ -26,6 +26,7 @@
     border: none;
     outline: none;
     border-radius: var(--br-rd);
+    cursor: pointer;
 }
 
 .genre-img {
