@@ -1,12 +1,13 @@
 import "./navbar.css";
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import NavbarLogo from "../../assets/logos/pg-logo-main.svg";
 import { useAuth, useProduct, useCart } from "../../contexts";
 import { ProfileDropdown } from "./profile-dropdown";
 import { SearchRecomm } from ".."
 
 export const Navbar = () => {
+    const navigate = useNavigate();
     const { authState: { isAuth } } = useAuth();
     const { productDispatch } = useProduct();
     const { cartState: { cart, wishlist } } = useCart();
@@ -39,6 +40,7 @@ export const Navbar = () => {
         productDispatch({ type: "SET_SEARCH_INPUT", payload: searchBoxValue })
         productDispatch({ type: "GET_SEARCH_RESULTS" });
         setSearchBoxValue("");
+        navigate("/bookstore");
     }
 
     const searchEnterHandler = (event) => {
@@ -190,13 +192,6 @@ export const Navbar = () => {
                         </NavLink>
                     </li>
                 </ul>
-
-                <div
-                    to="./book-club" 
-                    className="nav-sec-item item-no-hov"
-                >
-                    <span className="txt-bold">JOIN OUR BOOKCLUB TODAY!!!</span>
-                </div>
             </div>
         </nav>
     );

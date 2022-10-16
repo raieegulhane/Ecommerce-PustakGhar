@@ -5,7 +5,7 @@ import { discountList } from "./discount-list";
 export const DiscountDisplay = () => {
     return(
         <div className="disc-wrapper">
-            <h1 className="disc-heading">Discounts You Can't Miss!!!</h1>
+            <h1 className="disc-heading">Discounts you can't miss!!!</h1>
             <section className="flex-row flex_justify-se">
                 {
                     discountList.map(({ _id, img, description}) => {

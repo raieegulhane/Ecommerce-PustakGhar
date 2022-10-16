@@ -9,7 +9,7 @@ export const TodaysDeals = () => {
         <div className="main-wrapper">
             <div className="container-75">
                 <ProductListing 
-                    title={"Today's Deals - 40% and Up Discounts!!"}
+                    title={"Today's Deals - 40% and up discounts!!"}
                     productList={todaysDealsList}
                     searchInput={0}
                 />

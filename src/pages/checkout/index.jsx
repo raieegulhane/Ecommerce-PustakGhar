@@ -60,7 +60,7 @@ export const Checkout = () => {
             prefill: {
                 name: `${firstName} ${lastName}`,
                 email: email,
-                contact: "987654321"
+                contact: mobileNo
             },
 
             theme: { color: "#000000"}
